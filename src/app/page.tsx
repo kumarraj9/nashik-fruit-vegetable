@@ -13,6 +13,7 @@ import {
   Anchor
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import HeroSlider from "@/components/HeroSlider";
 
 export default function HomePage() {
   const advantages = [
@@ -42,18 +43,8 @@ export default function HomePage() {
     <div className="w-full">
       {/* 1. Hero Section */}
       <section className="relative min-h-[90vh] flex items-center bg-[#022c22] overflow-hidden">
-        {/* Background Image with Dark Overlay */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero_banner.png"
-            alt="Premium Nashik Agricultural Produce"
-            fill
-            priority
-            className="object-cover opacity-30 select-none scale-105 transition-transform duration-10000"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/90 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-transparent" />
-        </div>
+        {/* Animated Background Slider */}
+        <HeroSlider />
 
         {/* Hero Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-16 sm:py-24">
