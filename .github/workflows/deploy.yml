@@ -26,13 +26,6 @@ jobs:
       - name: Build with Next.js
         run: npm run build
 
-      - name: Debug FTP Directory Structure
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: python list_ftp.py
-
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -41,4 +34,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
           # Change this to ./ if your FTP account logs in directly inside public_html
-          server-dir: /
+          server-dir: domains/nashikfruitandvegetable.com/public_html/
