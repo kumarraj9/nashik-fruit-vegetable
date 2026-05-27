@@ -16,29 +16,31 @@ try:
     ftp.login(username, password)
     print("Logged in successfully!")
     
-    print(f"Current working directory (PWD): {ftp.pwd()}")
-    
-    print("\nListing current folder contents:")
-    ftp.retrlines('LIST')
-    
-    print("\nAttempting to go up one directory (..):")
+    print("\n--- Exploring 'domains' folder ---")
     try:
-        ftp.cwd('..')
-        print(f"New PWD: {ftp.pwd()}")
-        print("Listing parent folder contents:")
+        ftp.cwd('domains')
+        print("Entered 'domains' folder.")
         ftp.retrlines('LIST')
         
-        print("\nAttempting to go up another directory (../..):")
-        try:
-            ftp.cwd('..')
-            print(f"New PWD: {ftp.pwd()}")
-            print("Listing parent-parent folder contents:")
-            ftp.retrlines('LIST')
-        except Exception as e:
-            print(f"Could not go up further: {e}")
-            
+        # Check inside the first folder in domains (which should be the domain)
+        subdirs = []
+        ftp.dir(subdirs.append)
+        for line in subdirs:
+            parts = line.split()
+            if len(parts) > 8:
+                name = parts[-1]
+                if name not in ['.', '..']:
+                    print(f"\nFound domain folder: {name}")
+                    try:
+                        target_dir = f"{name}/public_html"
+                        ftp.cwd(target_dir)
+                        print(f"Successfully entered: domains/{target_dir}")
+                        print(f"Listing contents of domains/{target_dir}:")
+                        ftp.retrlines('LIST')
+                    except Exception as e:
+                        print(f"Could not enter domains/{target_dir}: {e}")
     except Exception as e:
-        print(f"Could not go up: {e}")
+        print(f"Could not check domains folder: {e}")
         
     ftp.quit()
 except Exception as e:
