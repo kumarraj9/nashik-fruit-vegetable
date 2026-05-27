@@ -34,4 +34,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
           # Change this to ./ if your FTP account logs in directly inside public_html
-          server-dir: ./
+          server-dir: /
