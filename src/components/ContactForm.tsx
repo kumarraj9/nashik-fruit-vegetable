@@ -36,6 +36,7 @@ export default function ContactForm() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const productsOptions = [
     { value: "onion", label: "Nashik Red Onion" },
@@ -82,10 +83,42 @@ export default function ContactForm() {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      setIsSubmitted(true);
+      setIsSubmitting(true);
+      try {
+        const selectedProductLabel =
+          productsOptions.find((opt) => opt.value === formData.product)?.label || formData.product;
+
+        const response = await fetch("https://formsubmit.co/ajax/shahvishal567@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify({
+            Name: formData.fullName,
+            Company: formData.companyName,
+            "Destination Country": formData.destination,
+            Product: selectedProductLabel,
+            "Volume (MT)": formData.volume,
+            "Phone / WhatsApp": formData.phone,
+            Message: formData.message,
+            _subject: `New B2B Lead: ${formData.fullName} - ${formData.companyName}`,
+          }),
+        });
+
+        if (response.ok) {
+          setIsSubmitted(true);
+        } else {
+          setErrors({ phone: "Submission failed. Please try again or use WhatsApp." });
+        }
+      } catch (err) {
+        setErrors({ phone: "Connection error. Please try again or use WhatsApp." });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -297,10 +330,17 @@ export default function ContactForm() {
 
           <button
             type="submit"
-            className="w-full bg-primary hover:bg-primary-dark text-white text-xs font-bold uppercase tracking-wider py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center space-x-2"
+            disabled={isSubmitting}
+            className="w-full bg-primary hover:bg-primary-dark text-white text-xs font-bold uppercase tracking-wider py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Send className="w-4 h-4 text-accent" />
-            <span>Generate Proforma Quotation Request</span>
+            {isSubmitting ? (
+              <span>Submitting Request...</span>
+            ) : (
+              <>
+                <Send className="w-4 h-4 text-accent" />
+                <span>Generate Proforma Quotation Request</span>
+              </>
+            )}
           </button>
         </form>
       ) : (
