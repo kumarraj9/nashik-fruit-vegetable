@@ -58,7 +58,7 @@ export default function DailyRatesSection() {
             {/* Interactive Image Frame */}
             <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 group shadow-md">
               <Image
-                src="/images/daily_price_sheet.png"
+                src="/images/daily_price_sheet.jpg"
                 alt="Daily APMC Mandi Price Sheet Nashik"
                 fill
                 className="object-contain p-2 transition-transform duration-300 group-hover:scale-102"

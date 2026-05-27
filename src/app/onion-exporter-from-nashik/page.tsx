@@ -5,6 +5,7 @@ import { ArrowLeft, MessageSquare, ShieldCheck, Ship, Calendar, Award, Phone } f
 import { siteConfig } from "@/config/site";
 import { onionPrices } from "@/data/onion-prices";
 import OnionPriceBulletin from "@/components/OnionPriceBulletin";
+import DailyRatesSection from "@/components/DailyRatesSection";
 
 export const metadata: Metadata = {
   title: "Export Specifications: Nashik Red Onion | B2B Bulk Supply",
@@ -155,6 +156,10 @@ export default function OnionProductPage() {
 
         </div>
 
+      </div>
+
+      <div className="mt-12 sm:mt-16">
+        <DailyRatesSection />
       </div>
     </div>
   );
