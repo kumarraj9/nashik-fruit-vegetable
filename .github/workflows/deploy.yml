@@ -33,7 +33,16 @@ jobs:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: python clean_ftp.py
+        run: python clean_ftp.py > clean_log.txt 2>&1 || true
+
+      - name: Commit Clean Log
+        run: |
+          git config --global user.name 'FTP Debugger'
+          git config --global user.email 'ftp-debugger@github.com'
+          git add clean_log.txt
+          git commit -m "Add FTP clean log [skip ci]" || exit 0
+          git push
+
 
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
