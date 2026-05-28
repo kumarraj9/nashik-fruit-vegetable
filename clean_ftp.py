@@ -39,8 +39,8 @@ try:
     ftp.login(username, password)
     print("Logged in successfully!")
     
-    # Go to the target directory
-    target_dir = "domains/nashikfruitandvegetable.com/public_html"
+    # Go to the target directory (FTP root is already public_html)
+    target_dir = "./"
     print(f"Navigating to {target_dir}...")
     ftp.cwd(target_dir)
     
@@ -55,7 +55,12 @@ try:
     print("Deleting _next folder recursively...")
     remove_dir_recursive(ftp, "_next")
     
+    # Delete accidentally created domains folder recursively if it exists
+    print("Deleting nested domains folder recursively...")
+    remove_dir_recursive(ftp, "domains")
+    
     ftp.quit()
     print("Cleanup completed successfully!")
 except Exception as e:
     print(f"FTP Cleanup Error: {e}")
+
