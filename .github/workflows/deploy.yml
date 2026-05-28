@@ -70,18 +70,25 @@ jobs:
           try:
               ftp = ftplib.FTP(server)
               ftp.login(username, password)
-              print('POST-DEPLOY PWD:', ftp.pwd())
-              print('POST-DEPLOY NLST root:', ftp.nlst())
+              print('PWD:', ftp.pwd())
               try:
-                  ftp.cwd('_next')
-                  print('POST-DEPLOY NLST _next:', ftp.nlst())
-                  ftp.cwd('static/chunks')
-                  print('POST-DEPLOY NLST chunks:', ftp.nlst())
+                  ftp.cwd('..')
+                  print('CWD to .. SUCCESS. PWD is now:', ftp.pwd())
+                  print('NLST in ..:', ftp.nlst())
+                  
+                  # Try to navigate to the domains folder
+                  try:
+                      ftp.cwd('domains/nashikfruitandvegetable.com/public_html')
+                      print('CWD to domains SUCCESS. PWD is now:', ftp.pwd())
+                      print('NLST in domains:', ftp.nlst())
+                  except Exception as ex:
+                      print('CWD to domains FAILED:', ex)
               except Exception as e:
-                  print('Failed to cwd to chunks:', e)
+                  print('CWD to .. FAILED:', e)
           except Exception as e:
               print('FTP LOGIN FAILED:', e)
           " > ftp_verify_log.txt
+
 
       - name: Commit Verify Log
         run: |
