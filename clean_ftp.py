@@ -39,23 +39,20 @@ try:
     ftp.login(username, password)
     print("Logged in successfully!")
     
-    # Go to the target directory (FTP root is already public_html)
+    # 1. Clean up accidental deployment in primary domain's public_html (initial login directory)
     target_dir = "./"
-    print(f"Navigating to {target_dir}...")
+    print(f"Navigating to primary directory for cleanup: {target_dir}...")
     ftp.cwd(target_dir)
     
-    # Delete sync state file
     try:
         ftp.delete(".ftp-deploy-sync-state.json")
-        print("Deleted .ftp-deploy-sync-state.json on server.")
+        print("Deleted .ftp-deploy-sync-state.json in primary.")
     except Exception as e:
-        print("No .ftp-deploy-sync-state.json found, or could not delete.")
+        print("No .ftp-deploy-sync-state.json found in primary.")
         
-    # Get current list of items in the directory
-    items = ftp.nlst()
-    print("Files/folders in root before clean:", items)
+    items_primary = ftp.nlst()
+    print("Files/folders in primary before cleanup:", items_primary)
     
-    # 1. Delete specific Next.js page directories and domains folder recursively
     nextjs_folders = [
         '_next',
         '_not-found',
@@ -68,18 +65,44 @@ try:
         'domains'
     ]
     for folder in nextjs_folders:
-        if folder in items:
-            print(f"Deleting directory: {folder}")
+        if folder in items_primary:
+            print(f"Deleting directory in primary: {folder}")
             remove_dir_recursive(ftp, folder)
             
-    # 2. Delete all HTML files in the root directory
-    for item in items:
+    for item in items_primary:
         if item.endswith('.html') and item not in ['.', '..']:
-            print(f"Deleting HTML file: {item}")
+            print(f"Deleting HTML file in primary: {item}")
             try:
                 ftp.delete(item)
             except Exception as e:
-                print(f"Failed to delete HTML file {item}: {e}")
+                print(f"Failed to delete HTML file in primary {item}: {e}")
+
+    # 2. Go to the actual website target directory and clean it
+    actual_target = "../domains/nashikfruitandvegetable.com/public_html"
+    print(f"Navigating to actual website directory: {actual_target}...")
+    ftp.cwd(actual_target)
+    
+    try:
+        ftp.delete(".ftp-deploy-sync-state.json")
+        print("Deleted .ftp-deploy-sync-state.json in actual website directory.")
+    except Exception as e:
+        print("No .ftp-deploy-sync-state.json found in actual website directory.")
+        
+    items_actual = ftp.nlst()
+    print("Files/folders in actual website directory before cleanup:", items_actual)
+    
+    for folder in nextjs_folders:
+        if folder in items_actual:
+            print(f"Deleting directory in actual website folder: {folder}")
+            remove_dir_recursive(ftp, folder)
+            
+    for item in items_actual:
+        if item.endswith('.html') and item not in ['.', '..']:
+            print(f"Deleting HTML file in actual website folder: {item}")
+            try:
+                ftp.delete(item)
+            except Exception as e:
+                print(f"Failed to delete HTML file in actual website folder {item}: {e}")
                 
     ftp.quit()
     print("Cleanup completed successfully!")
