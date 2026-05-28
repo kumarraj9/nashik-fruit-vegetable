@@ -1,0 +1,36 @@
+Connecting to FTP Server: 82.25.120.251 as u858808810...
+Logged in successfully!
+Navigating to ./...
+Deleted .ftp-deploy-sync-state.json on server.
+Files/folders in root before clean: ['__next._index.txt', 'file.svg', 'pomegranate-supplier-from-nashik.html', 'images', '__next._full.txt', 'logo.png', 'onion-exporter-from-nashik', 'icon.png', 'logistics.html', 'pomegranate-supplier-from-nashik', 'products.html', '_not-found', 'products.txt', 'favicon.ico', 'next.svg', 'tomato-supplier-from-nashik', '..', '.', 'products', 'onion-exporter-from-nashik.html', '__next._tree.txt', 'logistics', '404.html', 'globe.svg', 'index.html', 'contact', 'onion-exporter-from-nashik.txt', 'index.txt', 'contact.html', '__next.__PAGE__.txt', 'contact.txt', 'vercel.svg', '_not-found.txt', 'tomato-supplier-from-nashik.txt', 'tomato-supplier-from-nashik.html', 'logistics.txt', '_not-found.html', '_next', 'pomegranate-supplier-from-nashik.txt', 'window.svg', '__next._head.txt']
+Deleting directory: _next
+Successfully deleted directory: -dagb4Wq4iq8nJcHe12cc
+Successfully deleted directory: chunks
+Successfully deleted directory: -dagb4Wq4iq8nJcHe12cc
+Successfully deleted directory: media
+Successfully deleted directory: static
+Successfully deleted directory: _next
+Deleting directory: _not-found
+Successfully deleted directory: _not-found
+Deleting directory: contact
+Successfully deleted directory: contact
+Deleting directory: logistics
+Successfully deleted directory: logistics
+Deleting directory: products
+Successfully deleted directory: products
+Deleting directory: onion-exporter-from-nashik
+Successfully deleted directory: onion-exporter-from-nashik
+Deleting directory: tomato-supplier-from-nashik
+Successfully deleted directory: tomato-supplier-from-nashik
+Deleting directory: pomegranate-supplier-from-nashik
+Successfully deleted directory: pomegranate-supplier-from-nashik
+Deleting HTML file: pomegranate-supplier-from-nashik.html
+Deleting HTML file: logistics.html
+Deleting HTML file: products.html
+Deleting HTML file: onion-exporter-from-nashik.html
+Deleting HTML file: 404.html
+Deleting HTML file: index.html
+Deleting HTML file: contact.html
+Deleting HTML file: tomato-supplier-from-nashik.html
+Deleting HTML file: _not-found.html
+Cleanup completed successfully!
