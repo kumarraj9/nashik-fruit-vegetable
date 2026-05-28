@@ -51,8 +51,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          # The FTP account logs in directly inside public_html
-          server-dir: ./
+          # Deploy to the actual addon domain directory relative to initial login PWD (/public_html)
+          server-dir: ../domains/nashikfruitandvegetable.com/public_html/
 
       - name: Verify FTP Contents After Deploy
         env:
@@ -70,25 +70,23 @@ jobs:
           try:
               ftp = ftplib.FTP(server)
               ftp.login(username, password)
-              print('PWD:', ftp.pwd())
+              print('FTP LOGIN SUCCESS')
               try:
-                  ftp.cwd('..')
-                  print('CWD to .. SUCCESS. PWD is now:', ftp.pwd())
-                  print('NLST in ..:', ftp.nlst())
-                  
-                  # Try to navigate to the domains folder
+                  ftp.cwd('../domains/nashikfruitandvegetable.com/public_html')
+                  print('CWD actual target SUCCESS. PWD is now:', ftp.pwd())
+                  print('NLST root:', ftp.nlst())
                   try:
-                      ftp.cwd('domains/nashikfruitandvegetable.com/public_html')
-                      print('CWD to domains SUCCESS. PWD is now:', ftp.pwd())
-                      print('NLST in domains:', ftp.nlst())
-                  except Exception as ex:
-                      print('CWD to domains FAILED:', ex)
+                      ftp.cwd('_next')
+                      print('NLST _next:', ftp.nlst())
+                      ftp.cwd('static/chunks')
+                      print('NLST chunks:', ftp.nlst())
+                  except Exception as e:
+                      print('Failed to cwd to chunks:', e)
               except Exception as e:
-                  print('CWD to .. FAILED:', e)
+                  print('CWD to actual target FAILED:', e)
           except Exception as e:
               print('FTP LOGIN FAILED:', e)
           " > ftp_verify_log.txt
-
 
       - name: Commit Verify Log
         run: |
@@ -97,4 +95,5 @@ jobs:
           git add ftp_verify_log.txt
           git commit -m "Add FTP verification log [skip ci]" || exit 0
           git push
+
 
