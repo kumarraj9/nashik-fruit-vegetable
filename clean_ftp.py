@@ -51,16 +51,39 @@ try:
     except Exception as e:
         print("No .ftp-deploy-sync-state.json found, or could not delete.")
         
-    # Delete _next folder recursively
-    print("Deleting _next folder recursively...")
-    remove_dir_recursive(ftp, "_next")
+    # Get current list of items in the directory
+    items = ftp.nlst()
+    print("Files/folders in root before clean:", items)
     
-    # Delete accidentally created domains folder recursively if it exists
-    print("Deleting nested domains folder recursively...")
-    remove_dir_recursive(ftp, "domains")
-    
+    # 1. Delete specific Next.js page directories and domains folder recursively
+    nextjs_folders = [
+        '_next',
+        '_not-found',
+        'contact',
+        'logistics',
+        'products',
+        'onion-exporter-from-nashik',
+        'tomato-supplier-from-nashik',
+        'pomegranate-supplier-from-nashik',
+        'domains'
+    ]
+    for folder in nextjs_folders:
+        if folder in items:
+            print(f"Deleting directory: {folder}")
+            remove_dir_recursive(ftp, folder)
+            
+    # 2. Delete all HTML files in the root directory
+    for item in items:
+        if item.endswith('.html') and item not in ['.', '..']:
+            print(f"Deleting HTML file: {item}")
+            try:
+                ftp.delete(item)
+            except Exception as e:
+                print(f"Failed to delete HTML file {item}: {e}")
+                
     ftp.quit()
     print("Cleanup completed successfully!")
 except Exception as e:
     print(f"FTP Cleanup Error: {e}")
+
 
