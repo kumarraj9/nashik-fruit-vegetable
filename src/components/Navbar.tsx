@@ -116,9 +116,9 @@ export default function Navbar() {
               >
                 <div className="flex items-center space-x-1 cursor-pointer">
                   <Link
-                    href="/products"
+                    href="/products/"
                     className={`text-sm font-semibold tracking-wide transition-colors duration-200 ${
-                      pathname === "/products" || pathname.endsWith("-from-nashik") ? "text-primary-light font-bold" : "text-slate-700 hover:text-primary"
+                      pathname === "/products/" || pathname.endsWith("-from-nashik/") ? "text-primary-light font-bold" : "text-slate-700 hover:text-primary"
                     }`}
                   >
                     Product
@@ -136,7 +136,7 @@ export default function Navbar() {
                 {isDropdownOpen && (
                   <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-50 transform origin-top transition-all duration-200">
                     <Link
-                      href="/products"
+                      href="/products/"
                       onClick={() => setIsDropdownOpen(false)}
                       className="block px-4 py-2 text-[10px] font-bold text-slate-400 hover:text-primary uppercase tracking-widest"
                     >
@@ -144,21 +144,21 @@ export default function Navbar() {
                     </Link>
                     <div className="h-px bg-slate-100 my-1" />
                     <Link
-                      href="/onion-exporter-from-nashik"
+                      href="/onion-exporter-from-nashik/"
                       onClick={() => setIsDropdownOpen(false)}
                       className="block px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-primary transition-colors"
                     >
                       🧅 Nashik Red Onion
                     </Link>
                     <Link
-                      href="/tomato-supplier-from-nashik"
+                      href="/tomato-supplier-from-nashik/"
                       onClick={() => setIsDropdownOpen(false)}
                       className="block px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-primary transition-colors"
                     >
                       🍅 Fresh Tomato
                     </Link>
                     <Link
-                      href="/pomegranate-supplier-from-nashik"
+                      href="/pomegranate-supplier-from-nashik/"
                       onClick={() => setIsDropdownOpen(false)}
                       className="block px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-primary transition-colors"
                     >
@@ -170,7 +170,7 @@ export default function Navbar() {
 
               {/* Logistics Link */}
               <Link
-                href="/logistics"
+                href="/logistics/"
                 className={`text-sm font-semibold tracking-wide transition-colors duration-200 relative py-1 ${
                   pathname.startsWith("/logistics") ? "text-primary-light font-bold" : "text-slate-700 hover:text-primary"
                 }`}
@@ -183,7 +183,7 @@ export default function Navbar() {
 
               {/* Contact Link */}
               <Link
-                href="/contact"
+                href="/contact/"
                 className={`text-sm font-semibold tracking-wide transition-colors duration-200 relative py-1 ${
                   pathname.startsWith("/contact") ? "text-primary-light font-bold" : "text-slate-700 hover:text-primary"
                 }`}
@@ -195,7 +195,7 @@ export default function Navbar() {
               </Link>
 
               <Link
-                href="/contact"
+                href="/contact/"
                 className="bg-accent hover:bg-accent-dark text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 Get a Quote
@@ -240,7 +240,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setIsMobileProductOpen(!isMobileProductOpen)}
                   className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-base font-semibold tracking-wide transition-all text-slate-700 hover:bg-slate-50 hover:text-primary ${
-                    pathname === "/products" || pathname.endsWith("-from-nashik") ? "bg-emerald-50/50 text-primary" : ""
+                    pathname === "/products/" || pathname.endsWith("-from-nashik/") ? "bg-emerald-50/50 text-primary" : ""
                   }`}
                 >
                   <span>Product</span>
@@ -250,28 +250,28 @@ export default function Navbar() {
                 {isMobileProductOpen && (
                   <div className="pl-6 space-y-1 bg-slate-50/50 py-1.5 rounded-lg border border-slate-100">
                     <Link
-                      href="/products"
+                      href="/products/"
                       onClick={() => { setIsOpen(false); setIsMobileProductOpen(false); }}
                       className="flex items-center justify-between px-4 py-2 rounded-md text-xs font-bold text-slate-500 hover:text-primary uppercase tracking-wider"
                     >
                       All Commodities
                     </Link>
                     <Link
-                      href="/onion-exporter-from-nashik"
+                      href="/onion-exporter-from-nashik/"
                       onClick={() => { setIsOpen(false); setIsMobileProductOpen(false); }}
                       className="flex items-center justify-between px-4 py-2 rounded-md text-sm text-slate-600 hover:text-primary font-medium"
                     >
                       <span>🧅 Nashik Red Onion</span>
                     </Link>
                     <Link
-                      href="/tomato-supplier-from-nashik"
+                      href="/tomato-supplier-from-nashik/"
                       onClick={() => { setIsOpen(false); setIsMobileProductOpen(false); }}
                       className="flex items-center justify-between px-4 py-2 rounded-md text-sm text-slate-600 hover:text-primary font-medium"
                     >
                       <span>🍅 Fresh Tomato</span>
                     </Link>
                     <Link
-                      href="/pomegranate-supplier-from-nashik"
+                      href="/pomegranate-supplier-from-nashik/"
                       onClick={() => { setIsOpen(false); setIsMobileProductOpen(false); }}
                       className="flex items-center justify-between px-4 py-2 rounded-md text-sm text-slate-600 hover:text-primary font-medium"
                     >
@@ -283,7 +283,7 @@ export default function Navbar() {
 
               {/* Logistics */}
               <Link
-                href="/logistics"
+                href="/logistics/"
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center justify-between px-4 py-3 rounded-lg text-base font-semibold tracking-wide transition-all ${
                   pathname.startsWith("/logistics") ? "bg-emerald-50 text-primary font-bold" : "text-slate-700 hover:bg-slate-50 hover:text-primary"
@@ -295,7 +295,7 @@ export default function Navbar() {
 
               {/* Contact */}
               <Link
-                href="/contact"
+                href="/contact/"
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center justify-between px-4 py-3 rounded-lg text-base font-semibold tracking-wide transition-all ${
                   pathname.startsWith("/contact") ? "bg-emerald-50 text-primary font-bold" : "text-slate-700 hover:bg-slate-50 hover:text-primary"
@@ -321,7 +321,7 @@ export default function Navbar() {
                 <span>Call: {siteConfig.contact.phone}</span>
               </a>
               <Link
-                href="/contact"
+                href="/contact/"
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center w-full py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-lg text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all"
               >

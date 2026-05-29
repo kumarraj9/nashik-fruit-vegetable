@@ -19,7 +19,7 @@ export default function TomatoProductPage() {
         
         {/* Back Button */}
         <Link 
-          href="/products" 
+          href="/products/" 
           className="inline-flex items-center text-xs font-bold text-slate-500 hover:text-primary uppercase tracking-wider mb-8 transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-0.5 transition-transform" />

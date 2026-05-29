@@ -72,31 +72,31 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="hover:text-accent transition-colors flex items-center">
+                <Link href="/products/" className="hover:text-accent transition-colors flex items-center">
                   <ArrowRight className="w-3 h-3 mr-1.5 text-emerald-500" />
                   Produce Catalog
                 </Link>
               </li>
               <li>
-                <Link href="/onion-exporter-from-nashik" className="hover:text-accent transition-colors flex items-center font-semibold text-emerald-300">
+                <Link href="/onion-exporter-from-nashik/" className="hover:text-accent transition-colors flex items-center font-semibold text-emerald-300">
                   <ArrowRight className="w-3 h-3 mr-1.5 text-accent" />
                   Red Onion Specs
                 </Link>
               </li>
               <li>
-                <Link href="/tomato-supplier-from-nashik" className="hover:text-accent transition-colors flex items-center font-semibold text-emerald-300">
+                <Link href="/tomato-supplier-from-nashik/" className="hover:text-accent transition-colors flex items-center font-semibold text-emerald-300">
                   <ArrowRight className="w-3 h-3 mr-1.5 text-accent" />
                   Tomato Specs
                 </Link>
               </li>
               <li>
-                <Link href="/pomegranate-supplier-from-nashik" className="hover:text-accent transition-colors flex items-center font-semibold text-emerald-300">
+                <Link href="/pomegranate-supplier-from-nashik/" className="hover:text-accent transition-colors flex items-center font-semibold text-emerald-300">
                   <ArrowRight className="w-3 h-3 mr-1.5 text-accent" />
                   Bhagwa Pomegranate Specs
                 </Link>
               </li>
               <li>
-                <Link href="/logistics" className="hover:text-accent transition-colors flex items-center">
+                <Link href="/logistics/" className="hover:text-accent transition-colors flex items-center">
                   <ArrowRight className="w-3 h-3 mr-1.5 text-emerald-500" />
                   Logistics & QC Pipeline
                 </Link>
@@ -151,11 +151,11 @@ export default function Footer() {
             © {currentYear} {siteConfig.name}. All Rights Reserved. Sourced directly from Nashik, MH, India.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0 font-medium text-[11px]">
-            <Link href="/contact" className="hover:text-white transition-colors">Inquire FOB/CIF Pricing</Link>
+            <Link href="/contact/" className="hover:text-white transition-colors">Inquire FOB/CIF Pricing</Link>
             <span>•</span>
-            <Link href="/logistics" className="hover:text-white transition-colors">Cold Chain Standards</Link>
+            <Link href="/logistics/" className="hover:text-white transition-colors">Cold Chain Standards</Link>
             <span>•</span>
-            <Link href="/products" className="hover:text-white transition-colors">Product Specifications</Link>
+            <Link href="/products/" className="hover:text-white transition-colors">Product Specifications</Link>
           </div>
         </div>
       </div>

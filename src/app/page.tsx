@@ -66,7 +66,7 @@ export default function HomePage() {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link
-                href="/contact"
+                href="/contact/"
                 className="bg-accent hover:bg-accent-dark text-white text-sm font-bold uppercase tracking-wider py-4 px-8 rounded-xl text-center shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-accent/20 flex items-center justify-center space-x-2"
               >
                 <span>Request FOB/CIF Quote</span>
@@ -143,7 +143,7 @@ export default function HomePage() {
               </div>
               <div className="p-6 pt-0">
                 <Link
-                  href="/onion-exporter-from-nashik"
+                  href="/onion-exporter-from-nashik/"
                   className="w-full bg-slate-50 hover:bg-emerald-50 hover:text-primary text-slate-800 text-xs font-bold uppercase tracking-wider py-3.5 px-4 rounded-xl border border-slate-200 hover:border-emerald-200 transition-all duration-200 flex items-center justify-center space-x-1.5"
                 >
                   <span>View Export Specifications</span>
@@ -176,7 +176,7 @@ export default function HomePage() {
               </div>
               <div className="p-6 pt-0">
                 <Link
-                  href="/tomato-supplier-from-nashik"
+                  href="/tomato-supplier-from-nashik/"
                   className="w-full bg-slate-50 hover:bg-emerald-50 hover:text-primary text-slate-800 text-xs font-bold uppercase tracking-wider py-3.5 px-4 rounded-xl border border-slate-200 hover:border-emerald-200 transition-all duration-200 flex items-center justify-center space-x-1.5"
                 >
                   <span>View Export Specifications</span>
@@ -209,7 +209,7 @@ export default function HomePage() {
               </div>
               <div className="p-6 pt-0">
                 <Link
-                  href="/pomegranate-supplier-from-nashik"
+                  href="/pomegranate-supplier-from-nashik/"
                   className="w-full bg-slate-50 hover:bg-emerald-50 hover:text-primary text-slate-800 text-xs font-bold uppercase tracking-wider py-3.5 px-4 rounded-xl border border-slate-200 hover:border-emerald-200 transition-all duration-200 flex items-center justify-center space-x-1.5"
                 >
                   <span>View Export Specifications</span>
@@ -380,13 +380,13 @@ export default function HomePage() {
           </p>
           <div className="pt-4 flex justify-center space-x-4">
             <Link
-              href="/contact"
+              href="/contact/"
               className="bg-primary hover:bg-primary-dark text-white text-xs font-bold uppercase tracking-wider px-8 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all"
             >
               Configure Import Quote
             </Link>
             <Link
-              href="/products"
+              href="/products/"
               className="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider px-8 py-3.5 rounded-xl transition-all border border-slate-200"
             >
               Browse Specifications

@@ -87,14 +87,14 @@ export default function ProductsPage() {
 
                   <div className="pt-4 flex flex-col sm:flex-row gap-3">
                     <Link
-                      href={`/${product.slug}`}
+                      href={`/${product.slug}/`}
                       className="bg-primary hover:bg-primary-dark text-white text-xs font-bold uppercase tracking-wider py-3.5 px-6 rounded-xl transition-all duration-200 text-center shadow-md hover:shadow-lg flex items-center justify-center space-x-1.5"
                     >
                       <span>View Technical Specifications</span>
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                     <Link
-                      href="/contact"
+                      href="/contact/"
                       className="bg-slate-50 hover:bg-slate-100 text-slate-800 text-xs font-bold uppercase tracking-wider py-3.5 px-6 rounded-xl transition-all duration-200 text-center border border-slate-200"
                     >
                       Request Proforma Price

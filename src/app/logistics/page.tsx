@@ -167,7 +167,7 @@ export default function LogisticsPage() {
               </div>
               
               <Link
-                href="/contact"
+                href="/contact/"
                 className="bg-accent hover:bg-accent-dark text-white text-xs font-bold uppercase tracking-wider py-3.5 px-6 rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center space-x-1.5 shrink-0"
               >
                 <span>Initiate Export Order</span>
