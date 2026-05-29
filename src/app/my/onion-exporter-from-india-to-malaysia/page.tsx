@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck, Anchor, Compass, ClipboardCheck, ArrowRight, Ship, FileCheck, CheckCircle } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
@@ -101,27 +102,15 @@ export default function MalaysiaExportPage() {
               </div>
             </div>
 
-            {/* Quick stats panel */}
-            <div className="lg:col-span-4 bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm space-y-4">
-              <h3 className="text-sm font-bold tracking-widest text-emerald-400 uppercase">Transit Performance</h3>
-              <div className="divide-y divide-white/10 text-xs">
-                <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-400">Direct Shipping Line</span>
-                  <span className="font-bold text-white">JNPT (Mumbai) to Klang</span>
-                </div>
-                <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-400">Average Ocean Transit</span>
-                  <span className="font-bold text-white">9 to 12 Days</span>
-                </div>
-                <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-400">Humidity controls</span>
-                  <span className="font-bold text-white">Reefer Dehumidification</span>
-                </div>
-                <div className="py-2.5 flex justify-between">
-                  <span className="text-slate-400">Import Clearance</span>
-                  <span className="font-bold text-white">100% MAQIS Compliance</span>
-                </div>
-              </div>
+            {/* Hero Image */}
+            <div className="lg:col-span-4 relative h-72 sm:h-80 w-full rounded-2xl overflow-hidden bg-slate-800 border border-white/10 shadow-xl">
+              <Image
+                src="/images/malaysia_onion_hero.png"
+                alt="B2B Cargo Shipping to Malaysia"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
 
           </div>
@@ -180,6 +169,29 @@ export default function MalaysiaExportPage() {
                     <p className="text-slate-600 text-xs leading-relaxed">{port.desc}</p>
                   </div>
                 ))}
+
+                {/* Transit Performance Summary Card */}
+                <div className="bg-slate-50 border border-slate-200 p-6 rounded-xl space-y-3.5 shadow-sm">
+                  <h4 className="text-[11px] font-bold tracking-widest text-primary uppercase border-b border-slate-200 pb-2">Transit Performance Summary</h4>
+                  <div className="divide-y divide-slate-200/60 text-xs text-slate-700">
+                    <div className="py-2 flex justify-between">
+                      <span className="text-slate-500 font-sans">Direct Shipping Line</span>
+                      <span className="font-bold text-slate-950 font-sans">JNPT (Mumbai) to Klang</span>
+                    </div>
+                    <div className="py-2 flex justify-between">
+                      <span className="text-slate-500 font-sans">Average Ocean Transit</span>
+                      <span className="font-bold text-slate-950 font-sans">9 to 12 Days</span>
+                    </div>
+                    <div className="py-2 flex justify-between">
+                      <span className="text-slate-500 font-sans">Humidity Controls</span>
+                      <span className="font-bold text-slate-950 font-sans">Reefer Dehumidification</span>
+                    </div>
+                    <div className="py-2 flex justify-between">
+                      <span className="text-slate-500 font-sans">Import Clearance</span>
+                      <span className="font-bold text-slate-950 font-sans">100% MAQIS Compliance</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
