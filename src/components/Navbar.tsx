@@ -181,21 +181,34 @@ export default function Navbar() {
                 )}
               </Link>
 
+              {/* About Us Link */}
+              <Link
+                href="/about-us/"
+                className={`text-sm font-semibold tracking-wide transition-colors duration-200 relative py-1 ${
+                  pathname.startsWith("/about-us") ? "text-primary-light font-bold" : "text-slate-700 hover:text-primary"
+                }`}
+              >
+                About Us
+                {pathname.startsWith("/about-us") && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-light rounded-full" />
+                )}
+              </Link>
+
               {/* Contact Link */}
               <Link
-                href="/contact/"
+                href="/contact-us/"
                 className={`text-sm font-semibold tracking-wide transition-colors duration-200 relative py-1 ${
-                  pathname.startsWith("/contact") ? "text-primary-light font-bold" : "text-slate-700 hover:text-primary"
+                  pathname.startsWith("/contact-us") ? "text-primary-light font-bold" : "text-slate-700 hover:text-primary"
                 }`}
               >
                 Contact Us
-                {pathname.startsWith("/contact") && (
+                {pathname.startsWith("/contact-us") && (
                   <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-light rounded-full" />
                 )}
               </Link>
 
               <Link
-                href="/contact/"
+                href="/contact-us/"
                 className="bg-accent hover:bg-accent-dark text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 Get a Quote
@@ -293,12 +306,24 @@ export default function Navbar() {
                 <ChevronRight className="w-4 h-4 text-slate-400" />
               </Link>
 
-              {/* Contact */}
+              {/* About Us */}
               <Link
-                href="/contact/"
+                href="/about-us/"
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center justify-between px-4 py-3 rounded-lg text-base font-semibold tracking-wide transition-all ${
-                  pathname.startsWith("/contact") ? "bg-emerald-50 text-primary font-bold" : "text-slate-700 hover:bg-slate-50 hover:text-primary"
+                  pathname.startsWith("/about-us") ? "bg-emerald-50 text-primary font-bold" : "text-slate-700 hover:bg-slate-50 hover:text-primary"
+                }`}
+              >
+                <span>About Us</span>
+                <ChevronRight className="w-4 h-4 text-slate-400" />
+              </Link>
+
+              {/* Contact */}
+              <Link
+                href="/contact-us/"
+                onClick={() => setIsOpen(false)}
+                className={`flex items-center justify-between px-4 py-3 rounded-lg text-base font-semibold tracking-wide transition-all ${
+                  pathname.startsWith("/contact-us") ? "bg-emerald-50 text-primary font-bold" : "text-slate-700 hover:bg-slate-50 hover:text-primary"
                 }`}
               >
                 <span>Contact Us</span>
@@ -321,7 +346,7 @@ export default function Navbar() {
                 <span>Call: {siteConfig.contact.phone}</span>
               </a>
               <Link
-                href="/contact/"
+                href="/contact-us/"
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center w-full py-3 bg-accent hover:bg-accent-dark text-white font-bold rounded-lg text-sm tracking-wider uppercase shadow-md hover:shadow-lg transition-all"
               >

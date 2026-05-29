@@ -66,7 +66,7 @@ export default function HomePage() {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link
-                href="/contact/"
+                href="/contact-us/"
                 className="bg-accent hover:bg-accent-dark text-white text-sm font-bold uppercase tracking-wider py-4 px-8 rounded-xl text-center shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-accent/20 flex items-center justify-center space-x-2"
               >
                 <span>Request FOB/CIF Quote</span>
@@ -380,7 +380,7 @@ export default function HomePage() {
           </p>
           <div className="pt-4 flex justify-center space-x-4">
             <Link
-              href="/contact/"
+              href="/contact-us/"
               className="bg-primary hover:bg-primary-dark text-white text-xs font-bold uppercase tracking-wider px-8 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all"
             >
               Configure Import Quote

@@ -72,6 +72,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/about-us/" className="hover:text-accent transition-colors flex items-center">
+                  <ArrowRight className="w-3 h-3 mr-1.5 text-emerald-500" />
+                  About Us
+                </Link>
+              </li>
+              <li>
                 <Link href="/products/" className="hover:text-accent transition-colors flex items-center">
                   <ArrowRight className="w-3 h-3 mr-1.5 text-emerald-500" />
                   Produce Catalog
@@ -151,7 +157,7 @@ export default function Footer() {
             © {currentYear} {siteConfig.name}. All Rights Reserved. Sourced directly from Nashik, MH, India.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0 font-medium text-[11px]">
-            <Link href="/contact/" className="hover:text-white transition-colors">Inquire FOB/CIF Pricing</Link>
+            <Link href="/contact-us/" className="hover:text-white transition-colors">Inquire FOB/CIF Pricing</Link>
             <span>•</span>
             <Link href="/logistics/" className="hover:text-white transition-colors">Cold Chain Standards</Link>
             <span>•</span>

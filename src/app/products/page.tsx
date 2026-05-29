@@ -94,7 +94,7 @@ export default function ProductsPage() {
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                     <Link
-                      href="/contact/"
+                      href="/contact-us/"
                       className="bg-slate-50 hover:bg-slate-100 text-slate-800 text-xs font-bold uppercase tracking-wider py-3.5 px-6 rounded-xl transition-all duration-200 text-center border border-slate-200"
                     >
                       Request Proforma Price

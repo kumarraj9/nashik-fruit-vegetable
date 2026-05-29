@@ -56,7 +56,8 @@ try:
     nextjs_folders = [
         '_next',
         '_not-found',
-        'contact',
+        'contact-us',
+        'about-us',
         'logistics',
         'products',
         'onion-exporter-from-nashik',
