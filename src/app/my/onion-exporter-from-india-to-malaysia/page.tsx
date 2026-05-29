@@ -4,14 +4,17 @@ import { ShieldCheck, Anchor, Compass, ClipboardCheck, ArrowRight, Ship, FileChe
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Indian Red Onion Exporter to Malaysia | Port Klang & Penang Supply",
-  description: "B2B wholesale export of premium Indian Red Onions from Nashik to Malaysia. Graded 45mm+ & 55mm+ sizes, 9kg/10kg mesh bags. Sea freight from JNPT to Port Klang & Penang with full MAQIS document clearance.",
+  title: "Indian Red Onion Exporters to Malaysia | Nashik Onion Exporters",
+  description: "Nashik Fruit and Vegetable Company is one of the leading onion export companies in india. As an established onion exporter from mumbai/JNPT, we supply fresh red onions to Port Klang & Penang. A trusted onion exporter in nashik, maharashtra.",
   keywords: [
-    "Indian Onion Exporter to Malaysia",
-    "Import Onion India to Malaysia",
-    "Onion wholesale price Malaysia",
-    "Port Klang Onion importer supply",
-    "Nashik Red Onion price Malaysia",
+    "nashik onion exporters",
+    "onion export companies in india",
+    "onion exporter from mumbai",
+    "onion exporter in nashik",
+    "onion exporters in maharashtra",
+    "red onion exporters in india",
+    "onion exporter india",
+    "Port Klang onion importer",
     "MAQIS onion import document"
   ]
 };
@@ -79,12 +82,12 @@ export default function MalaysiaExportPage() {
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display leading-tight">
-                Premium Indian Red Onions <br />
-                <span className="text-emerald-400">Exported to Malaysia</span>
+                Premium Red Onion Exporters <br />
+                <span className="text-emerald-400">in India Supplying Malaysia</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed font-sans">
-                Direct wholesale supply from Nashik (India's onion capital) to Port Klang, Penang, and Johor. Graded for high pungency and moisture control, ensuring optimal shelf-life in Malaysian tropical climates.
+                As one of the premier onion export companies in india, we specialize in shipping fresh red onions directly from Mumbai port to Port Klang, Penang, and Johor. We connect Malaysian wholesale buyers with prime crops from Nashik, Maharashtra.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -133,14 +136,14 @@ export default function MalaysiaExportPage() {
             {/* Specs Table */}
             <div className="lg:col-span-7 space-y-6">
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 font-display">
-                Malaysia Market Specifications & Grades
+                Quality Sourcing from Premier Nashik Onion Exporters
               </h2>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Malaysian wholesale buyers generally prefer medium to large red onions with sturdy skins that survive ocean transit without sprouting or rot. Our sorting plants grade onions specifically to match these preferences.
+                When looking for a reliable onion exporter in nashik, quality consistency is paramount. As leading onion exporters in maharashtra, we operate modern sorting houses in the heart of the Nashik agricultural belt. This allows us to grade onions specifically to match stringent Malaysian market sizing and skin quality demands.
               </p>
               
-              <div className="border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white">
-                <table className="min-w-full divide-y divide-slate-200 text-left text-xs">
+              <div className="border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white font-sans text-xs">
+                <table className="min-w-full divide-y divide-slate-200 text-left">
                   <tbody className="divide-y divide-slate-100 font-medium">
                     {specs.map((spec, idx) => (
                       <tr key={idx} className={idx % 2 === 0 ? "bg-slate-50/50" : "bg-white"}>
@@ -156,8 +159,11 @@ export default function MalaysiaExportPage() {
             {/* Malaysian Port Details Cards */}
             <div className="lg:col-span-5 space-y-6">
               <h3 className="font-bold text-slate-900 text-lg border-l-4 border-primary pl-3 font-display">
-                Discharge Ports & Ocean Schedules
+                Express Logistics by a Leading Onion Exporter from Mumbai
               </h3>
+              <p className="text-slate-600 text-xs leading-relaxed">
+                We operate as a prime onion exporter india, managing refrigerated cargo containers (FCL Reefers) directly from JNPT (Nhava Sheva) in Mumbai to Port Klang and Penang. Our shipping lines offer direct transit with automated humidity control.
+              </p>
               
               <div className="space-y-4">
                 {malaysianPorts.map((port, i) => (
