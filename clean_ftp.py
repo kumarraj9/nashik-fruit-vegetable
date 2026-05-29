@@ -58,6 +58,7 @@ try:
         '_not-found',
         'contact-us',
         'about-us',
+        'my',
         'logistics',
         'products',
         'onion-exporter-from-nashik',
