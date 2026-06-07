@@ -155,6 +155,10 @@ export default function Footer() {
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-400 text-xs">
           <p className="text-center md:text-left">
             © {currentYear} {siteConfig.name}. All Rights Reserved. Sourced directly from Nashik, MH, India.
+            <br className="hidden md:inline" />
+            <span className="text-[10px] text-slate-500 mt-1 block">
+              Website made by <span className="text-slate-400 font-semibold">Growthverse Media</span>
+            </span>
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0 font-medium text-[11px]">
             <Link href="/contact-us/" className="hover:text-white transition-colors">Inquire FOB/CIF Pricing</Link>
