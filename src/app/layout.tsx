@@ -59,11 +59,37 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Nashik Fruit and Vegetable Company",
+    "alternateName": "Nashik Fruit & Vegetable Exporters",
+    "url": "https://nashikfruitandvegetable.com",
+    "logo": "https://nashikfruitandvegetable.com/logo.png",
+    "image": "https://nashikfruitandvegetable.com/logo.png",
+    "telephone": "+919226122922",
+    "email": "inquiry@nashikfruitandvegetable.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lasalgaon APMC Market Yard",
+      "addressLocality": "Nashik",
+      "addressRegion": "Maharashtra",
+      "postalCode": "422306",
+      "addressCountry": "IN"
+    }
+  };
+
   return (
     <html
       lang="en"
       className={`${outfit.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[#fdfdfd] text-slate-900 font-sans">
         <Navbar />
         {/* Padding top is added to account for the fixed sticky navbar */}

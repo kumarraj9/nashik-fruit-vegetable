@@ -62,8 +62,66 @@ export default function LogisticsPage() {
     }
   ];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nashikfruitandvegetable.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Logistics & Quality Control",
+        "item": "https://nashikfruitandvegetable.com/logistics/"
+      }
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What port in India is used for shipping Nashik agricultural produce?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most of our exports are processed and loaded into refrigerated containers in Nashik and then transported to the Jawaharlal Nehru Port Trust (JNPT / Nhava Sheva) in Mumbai for vessel loading."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the temperature controlled during shipping?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We utilize state-of-the-art refrigerated containers (Reefers) maintaining specific micro-climates. Tomatoes are shipped at 10-12°C, while pomegranates are kept at 5-10°C with 90-95% relative humidity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What certifications are provided for export compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every export consignment includes an APEDA registration certificate, FSSAI licensing documentation, a government Phytosanitary Certificate verifying pest-free status, and a Certificate of Origin."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd] py-12 sm:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

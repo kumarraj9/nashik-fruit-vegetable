@@ -41,8 +41,31 @@ export default function AboutUsPage() {
     }
   ];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nashikfruitandvegetable.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://nashikfruitandvegetable.com/about-us/"
+      }
+    ]
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       
       {/* 1. Hero Header Section */}
       <section className="relative bg-[#022c22] py-20 sm:py-28 overflow-hidden text-white">

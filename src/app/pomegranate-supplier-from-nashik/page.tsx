@@ -13,8 +13,68 @@ export default function PomegranateProductPage() {
   const product = siteConfig.products.pomegranate;
   const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(product.whatsappText)}`;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nashikfruitandvegetable.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Produce Catalog",
+        "item": "https://nashikfruitandvegetable.com/products/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Bhagwa Pomegranate",
+        "item": "https://nashikfruitandvegetable.com/pomegranate-supplier-from-nashik/"
+      }
+    ]
+  };
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Bhagwa Pomegranate (Export Grade A)",
+    "image": "https://nashikfruitandvegetable.com/images/pomegranate_export.png",
+    "description": "Premium fresh Bhagwa pomegranates from Nashik, Maharashtra. Sized 200g to 350g+, packed with foam nets in strong corrugated boxes for safe international delivery.",
+    "sku": "POME-NSK-003",
+    "brand": {
+      "@type": "Brand",
+      "name": "Nashik Fruit and Vegetable Company"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://nashikfruitandvegetable.com/pomegranate-supplier-from-nashik/",
+      "priceCurrency": "USD",
+      "price": "0.00",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "valueAddedTaxIncluded": "false"
+      },
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    }
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd] py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Back Button */}

@@ -12,8 +12,31 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   const productList = Object.values(siteConfig.products);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nashikfruitandvegetable.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Produce Catalog",
+        "item": "https://nashikfruitandvegetable.com/products/"
+      }
+    ]
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd] py-12 sm:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="border-b border-slate-200 pb-10 mb-16 text-center md:text-left">

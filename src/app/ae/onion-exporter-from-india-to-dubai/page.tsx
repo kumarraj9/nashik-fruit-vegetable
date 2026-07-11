@@ -64,8 +64,66 @@ export default function DubaiExportPage() {
     }
   ];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nashikfruitandvegetable.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Onion Export Dubai",
+        "item": "https://nashikfruitandvegetable.com/ae/onion-exporter-from-india-to-dubai/"
+      }
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which ports in Dubai/UAE do you export red onions to?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We primarily export to Jebel Ali Port in Dubai, which offers state-of-the-art cold-chain logistics and fast customs clearance. We also serve Port Rashid and Sharjah Port (Hamriyah)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the typical shipping transit time from India to Dubai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The ocean shipping transit time from JNPT/Nhava Sheva Port (Mumbai) to Jebel Ali Port (Dubai) is very fast, taking only 4 to 6 days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What customs procedures are required in Dubai for Indian onion imports?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Importers need a Dubai Municipality food importer account and must register the shipment on the FIRS (Food Import and Re-export System) portal. We provide all essential paperwork, including a government-certified Phytosanitary Certificate, Chamber Certificate of Origin, and detailed shipping documents."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       
       {/* 1. Localization Hero Section */}
       <section className="relative bg-[#022c22] py-20 sm:py-28 overflow-hidden text-white">

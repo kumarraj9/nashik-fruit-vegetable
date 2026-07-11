@@ -16,8 +16,68 @@ export default function OnionProductPage() {
   const product = siteConfig.products.onion;
   const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(product.whatsappText)}`;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nashikfruitandvegetable.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Produce Catalog",
+        "item": "https://nashikfruitandvegetable.com/products/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Nashik Red Onion",
+        "item": "https://nashikfruitandvegetable.com/onion-exporter-from-nashik/"
+      }
+    ]
+  };
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Nashik Red Onion (Export Grade A)",
+    "image": "https://nashikfruitandvegetable.com/images/onion_export.png",
+    "description": "Premium export-grade Nashik Red Onions (Dark Red / Light Red variety). Size grades 45mm+ and 55mm+ for Gulf & Southeast Asian B2B markets.",
+    "sku": "ONION-NSK-001",
+    "brand": {
+      "@type": "Brand",
+      "name": "Nashik Fruit and Vegetable Company"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://nashikfruitandvegetable.com/onion-exporter-from-nashik/",
+      "priceCurrency": "USD",
+      "price": "0.00",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "valueAddedTaxIncluded": "false"
+      },
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    }
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd] py-12 sm:py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Back Button */}

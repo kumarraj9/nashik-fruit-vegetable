@@ -63,8 +63,66 @@ export default function MalaysiaExportPage() {
     }
   ];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nashikfruitandvegetable.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Onion Export Malaysia",
+        "item": "https://nashikfruitandvegetable.com/my/onion-exporter-from-india-to-malaysia/"
+      }
+    ]
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which ports in Malaysia do you ship red onions to?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We ship directly from JNPT Mumbai to major ports in Malaysia, including Port Klang (Kuala Lumpur), Penang Port (Butterworth), and Johor Port (Pasir Gudang)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the required import documents for onion shipments into Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Onion shipments to Malaysia require a valid import permit from the Malaysian Agricultural Food Inspection Service (MAQIS), alongside our Phytosanitary Certificate, APEDA registration, Certificate of Origin, and complete commercial invoicing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the typical transit time from India to Port Klang?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The direct sea transit time from Nhava Sheva (JNPT) Mumbai to Port Klang is approximately 9 to 11 days."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       
       {/* 1. Localization Hero Section */}
       <section className="relative bg-[#022c22] py-20 sm:py-28 overflow-hidden text-white">
