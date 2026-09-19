@@ -11,6 +11,11 @@ export const siteConfig = {
     address: "APMC Market Yard, Pimpalgaon Baswant, Nashik, Maharashtra - 422209, India",
     logisticsHub: "JNPT / Nhava Sheva Port, Mumbai, India",
   },
+  social: {
+    youtube: "https://www.youtube.com/@nashikfruits",
+    instagram: "https://www.instagram.com/nashikfruits/",
+    whatsapp: "https://wa.me/917083960822",
+  },
   trustSignals: {
     apeda: {
       name: "APEDA Registered",

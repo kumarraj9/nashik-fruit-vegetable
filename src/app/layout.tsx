@@ -73,6 +73,11 @@ export default function RootLayout({
     "image": "https://nashikfruitandvegetable.com/images/onion_export.png",
     "telephone": "+917083960822",
     "email": "suraj@nashikfruitandvegetablecompany.com",
+    "sameAs": [
+      "https://www.youtube.com/@nashikfruits",
+      "https://www.instagram.com/nashikfruits/",
+      "https://wa.me/917083960822"
+    ],
     "description": "Enterprise-grade B2B merchant exporter of Nashik Red Onions (Garva, Dark Red), Fresh Grade-A Tomatoes, and Bhagwa Pomegranates from Lasalgaon APMC to global destinations including Dubai (UAE), Malaysia, Sri Lanka, and Singapore.",
     "address": {
       "@type": "PostalAddress",
