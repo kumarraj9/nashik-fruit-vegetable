@@ -148,6 +148,21 @@ export default function RootLayout({
       className={`${outfit.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
       <head>
+        {/* Google Analytics GA4 */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-Z618DXDCB5"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-Z618DXDCB5');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
