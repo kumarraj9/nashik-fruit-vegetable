@@ -48,12 +48,18 @@ export const siteConfig = {
       imageUrl: "/images/onion_export.png",
       whatsappText: "Hello, I am looking to import Nashik Red Onions. Please share current FOB/CIF prices for Grade 55mm+.",
       specs: [
-        { parameter: "Variety", value: "Nashik Dark Red / Light Red" },
-        { parameter: "Size Grades", value: "45mm+, 55mm+ (Strictly graded for Gulf & Southeast Asian Markets)" },
-        { parameter: "Packaging", value: "5kg, 10kg, 20kg, 50kg Lennonet/Mesh Bags (Custom branding available)" },
-        { parameter: "Availability", value: "Year-Round (Summer, Monsoon, and Winter crop cycles)" },
-        { parameter: "Minimum Order Qty (MOQ)", value: "1x20ft (approx 13 MT) or 1x40ft Reefer Container (approx 29 MT)" },
-        { parameter: "Quality Standards", value: "Well cured, skin dry, free from mold/decay, sound bulbs" },
+        { parameter: "HS Code", value: "07031010 (Fresh Onions)" },
+        { parameter: "Variety", value: "Nashik Dark Red, Light Red & Garva (Rabi)" },
+        { parameter: "Origin", value: "Lasalgaon & Pimpalgaon APMC Belt, Nashik, Maharashtra, India" },
+        { parameter: "Size Grades", value: "25-35mm (Small), 35-45mm, 45-55mm (Grade A), 50-70mm, 55mm+ & 60-80mm+ (Jumbo)" },
+        { parameter: "Packaging Options", value: "3kg, 5kg, 9kg, 10kg, 18kg, 20kg, 25kg, 50kg Lenonet Mesh & Hessian Jute Bags" },
+        { parameter: "Harvest Availability", value: "Year-Round (Kharif: Oct-Dec | Late Kharif: Jan-Mar | Garva/Rabi: Apr-Jun)" },
+        { parameter: "Solids / Organoleptic", value: "Brix 11 - 13%, High Pungency, Deep Crimson Red Skin Layers" },
+        { parameter: "Natural Shelf Life", value: "Up to 5 - 6 Months (Garva Crop) under ambient ventilated storage" },
+        { parameter: "Minimum Order Qty (MOQ)", value: "1x40ft Reefer Container (approx 28 - 29 MT) or 1x20ft (approx 13 MT)" },
+        { parameter: "Quality Parameters", value: "Well-cured outer skin, dry neck, free from sprouts, double bulbs & decay" },
+        { parameter: "Container Shipping Temp", value: "+4°C to +6°C Reefer, 65-70% RH, 15-20 CBM/hr Airflow" },
+        { parameter: "Certifications Issued", value: "APEDA Registration, FSSAI, Phytosanitary Certificate, Certificate of Origin" }
       ]
     },
     tomato: {
