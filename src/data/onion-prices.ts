@@ -21,26 +21,26 @@ export interface OnionPrices {
 // UPDATE ONION PRICES HERE EVERY DAY
 // -------------------------------------------------------------
 export const onionPrices: OnionPrices = {
-  lastUpdated: "21-03-2026",
-  domesticBiltyDate: "20-03-2026",
+  lastUpdated: "19-09-2026",
+  domesticBiltyDate: "19-09-2026",
   newCrop: [
-    { name: "Gulf Dubai", flag: "🇦🇪", spec: "55mm+", rate: "14.50", currency: "Rs.", unit: "kg" },
-    { name: "Sri Lanka", flag: "🇱🇰", spec: "45mm+", rate: "13.50", currency: "Rs.", unit: "kg" },
-    { name: "Malaysia", flag: "🇲🇾", spec: "45mm+", rate: "13.50", currency: "Rs.", unit: "kg", extra: "9kg packing" },
-    { name: "Vietnam", flag: "🇻🇳", spec: "35mm+", rate: "10.00", currency: "Rs.", unit: "kg", extra: "10kg Mesh bag" }
+    { name: "Gulf Dubai", flag: "🇦🇪", spec: "55mm+", rate: "51.00", currency: "Rs.", unit: "kg" },
+    { name: "Colombo (Sri Lanka)", flag: "🇱🇰", spec: "45mm+", rate: "48.00", currency: "Rs.", unit: "kg" },
+    { name: "Malaysia", flag: "🇲🇾", spec: "45mm+", rate: "47.50", currency: "Rs.", unit: "kg" }
   ],
   garvaCrop: [
-    { name: "Gulf Dubai", flag: "🇦🇪", spec: "55mm+", rate: "16.00", currency: "Rs.", unit: "kg" },
-    { name: "Colombo (Sri Lanka)", flag: "🇱🇰", spec: "45mm+", rate: "15.00", currency: "Rs.", unit: "kg" }
+    { name: "Gulf Dubai (Garva Pink)", flag: "🇦🇪", spec: "55mm+", rate: "51.00", currency: "Rs.", unit: "kg" },
+    { name: "Colombo (Garva Pink)", flag: "🇱🇰", spec: "45mm+", rate: "48.00", currency: "Rs.", unit: "kg" },
+    { name: "Malaysia (Garva Pink)", flag: "🇲🇾", spec: "45mm+", rate: "47.50", currency: "Rs.", unit: "kg" }
   ],
   domesticSpotBilty: [
-    { name: "Super Golta", flag: "🇮🇳", spec: "30-35mm", rate: "9.50", currency: "Rs.", unit: "kg" },
-    { name: "Medium", flag: "🇮🇳", spec: "35-45mm", rate: "11.00", currency: "Rs.", unit: "kg" },
-    { name: "Medium-Large", flag: "🇮🇳", spec: "45-60mm", rate: "11.50", currency: "Rs.", unit: "kg" },
-    { name: "Large", flag: "🇮🇳", spec: "55mm+", rate: "13.50", currency: "Rs.", unit: "kg" }
+    { name: "Spot Bilty Medium", flag: "🇮🇳", spec: "35mm+", rate: "41.00", currency: "Rs.", unit: "kg" },
+    { name: "Spot Bilty Grade A", flag: "🇮🇳", spec: "45mm+", rate: "44.00", currency: "Rs.", unit: "kg" },
+    { name: "Spot Bilty Large", flag: "🇮🇳", spec: "50mm+", rate: "46.00", currency: "Rs.", unit: "kg" },
+    { name: "Spot Bilty Extra Large", flag: "🇮🇳", spec: "55mm+", rate: "47.00", currency: "Rs.", unit: "kg" }
   ],
   domesticGeneral: [
-    { name: "Domestic General", flag: "🇮🇳", spec: "45mm+", rate: "13.00", currency: "Rs.", unit: "kg" },
-    { name: "Domestic Premium", flag: "🇮🇳", spec: "55mm+", rate: "15.00", currency: "Rs.", unit: "kg" }
+    { name: "Mix Mal", flag: "🇮🇳", spec: "40-60mm", rate: "41.00", currency: "Rs.", unit: "kg" },
+    { name: "Khad Chopra", flag: "🇮🇳", spec: "Chopra", rate: "30.00", currency: "Rs.", unit: "kg" }
   ]
 };
