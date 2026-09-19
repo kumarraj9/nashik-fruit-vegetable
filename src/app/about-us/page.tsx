@@ -60,11 +60,55 @@ export default function AboutUsPage() {
     ]
   };
 
+  const aboutPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Nashik Fruit and Vegetable Company",
+    "description": "Learn about India's leading B2B exporter of premium Nashik Red Onions, Fresh Tomatoes, and Bhagwa Pomegranates. Direct farm sourcing, mechanical sorting, and international reefer logistics.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Nashik Fruit and Vegetable Company",
+      "foundingLocation": "Nashik, Maharashtra, India",
+      "knowsAbout": ["Lasalgaon APMC Market", "Garva Red Onion", "APEDA Certification", "FSSAI Food Safety", "Reefer Sea Logistics"]
+    }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is Nashik Fruit and Vegetable Company located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our primary sorting, curing, and packing house operations are based in the APMC Market Yard, Pimpalgaon Baswant & Lasalgaon, Nashik district, Maharashtra, India."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What certifications guarantee food safety and export compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We operate under full APEDA registration, FSSAI licensing, Import-Export Code (IEC) compliance, and issue official Government Phytosanitary Certificates for every container shipment."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       
       {/* 1. Hero Header Section */}

@@ -112,11 +112,49 @@ export default function LogisticsPage() {
     ]
   };
 
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "5-Step Nashik Agricultural Export Pipeline",
+    "description": "Step-by-step export clearance and cold-chain shipping procedure for Nashik agricultural produce.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "1. Order Booking & Proforma Invoice",
+        "text": "Commercial negotiation sets the FOB/CIF terms. We issue a formal Proforma Invoice (PI) detailing product specs, weight, packaging layout, target port of discharge, and payment conditions."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "2. Harvesting & Packing House Processing",
+        "text": "Produce is harvested from certified Nashik farms. In the packing house, crops undergo grading, washing (tomatoes), curing and skin-drying (onions), and manual inspection to isolate defectives."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "3. Government Phytosanitary Inspection",
+        "text": "Authorized plant quarantine inspectors examine the graded cargo. They issue a formal Phytosanitary Certificate confirming the consignment is free from pests and conforms to destination health standards."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "4. Certificate of Origin & Custom Filings",
+        "text": "We generate the Chamber of Commerce Certificate of Origin, Shipping Bill, and customs documentation. Import-Export Code (IEC) filings are pre-cleared for smooth cargo movement."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "5. Cold-Chain Port Loading (JNPT, Mumbai)",
+        "text": "Cargo is loaded into custom-sealed 20ft or 40ft refrigerated (Reefer) containers. It travels via express roads to Nhava Sheva Port (JNPT), Mumbai, for direct boarding onto sea vessels."
+      }
+    ]
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd] py-12 sm:py-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <script
         type="application/ld+json"

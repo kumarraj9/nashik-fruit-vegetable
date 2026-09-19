@@ -113,11 +113,45 @@ export default function MalaysiaExportPage() {
     ]
   };
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Indian Red Onion Export Service to Malaysia",
+    "serviceType": "Agricultural Commodity Export & MAQIS Permit Logistics",
+    "provider": {
+      "@type": "Organization",
+      "name": "Nashik Fruit and Vegetable Company"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Malaysia",
+      "identifier": "MY"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Malaysia Onion Supply Catalog",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Nashik Red Onion 45mm+ & 55mm+ (Malaysia Grade A)",
+            "description": "Export quality red onions for Port Klang, Penang Port & Johor discharge with MAQIS documentation"
+          }
+        }
+      ]
+    }
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <script
         type="application/ld+json"

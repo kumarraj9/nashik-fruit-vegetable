@@ -61,21 +61,81 @@ export default function RootLayout({
 }>) {
   const orgSchema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["Corporation", "WholesaleStore", "LocalBusiness"],
+    "@id": "https://nashikfruitandvegetable.com/#organization",
     "name": "Nashik Fruit and Vegetable Company",
-    "alternateName": "Nashik Fruit & Vegetable Exporters",
+    "alternateName": ["Nashik Fruit & Vegetable Exporters", "Nashik Agri Export Desk"],
     "url": "https://nashikfruitandvegetable.com",
     "logo": "https://nashikfruitandvegetable.com/logo.png",
-    "image": "https://nashikfruitandvegetable.com/logo.png",
-    "telephone": "+919226122922",
-    "email": "inquiry@nashikfruitandvegetable.com",
+    "image": "https://nashikfruitandvegetable.com/images/onion_export.png",
+    "telephone": "+917083960822",
+    "email": "suraj@nashikfruitandvegetablecompany.com",
+    "description": "Enterprise-grade B2B merchant exporter of Nashik Red Onions (Garva, Dark Red), Fresh Grade-A Tomatoes, and Bhagwa Pomegranates from Lasalgaon APMC to global destinations including Dubai (UAE), Malaysia, Sri Lanka, and Singapore.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Lasalgaon APMC Market Yard",
+      "streetAddress": "APMC Market Yard, Pimpalgaon Baswant",
       "addressLocality": "Nashik",
       "addressRegion": "Maharashtra",
-      "postalCode": "422306",
+      "postalCode": "422209",
       "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "20.1747",
+      "longitude": "73.9877"
+    },
+    "knowsAbout": [
+      "Nashik Red Onion Export",
+      "Lasalgaon APMC Market Yard",
+      "Garva Onion 5-6 Month Shelf Life",
+      "Bhagwa Pomegranate Export",
+      "Fresh Tomato Grade A Export",
+      "JNPT Nhava Sheva Reefer Container Shipping",
+      "APEDA Registration",
+      "FSSAI Licensing",
+      "Phytosanitary Certification",
+      "HS Code 07031010",
+      "Dubai Jebel Ali Port Onion Supply",
+      "Malaysia Port Klang Onion Supply"
+    ],
+    "areaServed": [
+      { "@type": "Country", "name": "United Arab Emirates", "identifier": "AE" },
+      { "@type": "Country", "name": "Malaysia", "identifier": "MY" },
+      { "@type": "Country", "name": "Sri Lanka", "identifier": "LK" },
+      { "@type": "Country", "name": "Singapore", "identifier": "SG" },
+      { "@type": "Country", "name": "Vietnam", "identifier": "VN" },
+      { "@type": "Country", "name": "Oman", "identifier": "OM" },
+      { "@type": "Country", "name": "Qatar", "identifier": "QA" },
+      { "@type": "Country", "name": "Kuwait", "identifier": "KW" },
+      { "@type": "Country", "name": "India", "identifier": "IN" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "B2B Export Agricultural Produce Catalog",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Nashik Red Onion (HS Code 07031010)",
+          "description": "Garva Pink, Dark Red & Light Red varieties graded 25mm to 80mm+"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Fresh Tomato Grade A (HS Code 07020000)",
+          "description": "Firm export tomatoes packed in 10kg/15kg plastic crates"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Bhagwa Pomegranate (HS Code 08109010)",
+          "description": "Deep red aril pomegranates sized 200g to 350g+ with foam nets"
+        }
+      ]
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+917083960822",
+      "contactType": "sales",
+      "areaServed": ["AE", "MY", "LK", "SG", "IN"],
+      "availableLanguage": ["en", "hi", "mr"]
     }
   };
 

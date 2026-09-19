@@ -35,11 +35,55 @@ export default function ContactPage() {
     ]
   };
 
+  const contactPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Nashik Fruit and Vegetable Company",
+    "description": "Request container export quotes (FOB/CIF) for Nashik Red Onions, Fresh Tomatoes, and Bhagwa Pomegranates.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Nashik Fruit and Vegetable Company",
+      "telephone": "+917083960822",
+      "email": "suraj@nashikfruitandvegetablecompany.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "APMC Market Yard, Pimpalgaon Baswant",
+        "addressLocality": "Nashik",
+        "addressRegion": "Maharashtra",
+        "postalCode": "422209",
+        "addressCountry": "IN"
+      }
+    }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How quickly can I receive a Proforma Invoice (PI) for onion export?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Upon submitting your container volume, size preference (e.g. 55mm+), packing style, and target port of discharge via our form or WhatsApp, our trade desk issues a formal Proforma Invoice within 2 to 4 business hours."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="w-full bg-slate-50 py-12 sm:py-20 bg-grid-pattern">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         

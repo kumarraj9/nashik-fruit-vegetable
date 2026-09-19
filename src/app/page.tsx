@@ -16,6 +16,63 @@ import { siteConfig } from "@/config/site";
 import HeroSlider from "@/components/HeroSlider";
 
 export default function HomePage() {
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://nashikfruitandvegetable.com",
+    "name": "Nashik Fruit and Vegetable Company",
+    "description": "B2B Export portal for Nashik Red Onions, Tomatoes, and Bhagwa Pomegranates",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Nashik Fruit and Vegetable Company"
+    }
+  };
+
+  const datasetSchema = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Nashik Daily Mandi Onion Export & Domestic Rates",
+    "description": "Daily wholesale market trade rates for Nashik Garva Pink Onions and Domestic Spot Bilty in India.",
+    "keywords": ["Nashik Onion Rate Today", "Garva Onion Export Price", "Dubai Onion Price", "Lasalgaon Mandi Rates"],
+    "creator": {
+      "@type": "Organization",
+      "name": "Nashik Fruit and Vegetable Company"
+    },
+    "temporalCoverage": "2026-09-19",
+    "spatialCoverage": "Nashik, Maharashtra, India"
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What products does Nashik Fruit and Vegetable Company export?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We specialize in exporting premium Grade-A Nashik Red Onions (Garva, Dark Red, Light Red), Fresh Firm Tomatoes, and Bhagwa Pomegranates directly from Nashik farms to global wholesale buyers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which countries do you supply fresh produce to?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our primary export markets include Dubai (UAE), Malaysia, Sri Lanka, Singapore, Vietnam, Oman, Qatar, Kuwait, and domestic wholesale distribution across Tier-1 hubs in India."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What port is used for ocean container shipping?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All containerized shipments are packed in Nashik and transported directly to JNPT (Jawaharlal Nehru Port Trust / Nhava Sheva) in Mumbai for vessel loading."
+        }
+      }
+    ]
+  };
+
   const advantages = [
     {
       icon: Tractor,
@@ -41,6 +98,18 @@ export default function HomePage() {
 
   return (
     <div className="w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* 1. Hero Section */}
       <section className="relative min-h-[90vh] flex items-center bg-[#022c22] overflow-hidden">
         {/* Animated Background Slider */}

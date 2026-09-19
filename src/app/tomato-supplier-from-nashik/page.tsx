@@ -43,8 +43,10 @@ export default function TomatoProductPage() {
     "@type": "Product",
     "name": "Fresh Tomato (Export Grade A)",
     "image": "https://nashikfruitandvegetable.com/images/tomato_export.png",
-    "description": "Premium fresh farm-grown Grade-A tomatoes from Nashik. Custom graded, packaged in durable plastic/corrugated crates for international transport.",
+    "description": "Premium fresh farm-grown Grade-A tomatoes from Nashik. Harvested at turning/breaker stage, packed in durable 10kg/15kg plastic crates for reefer container shipping.",
     "sku": "TOMATO-NSK-002",
+    "mpn": "HS-07020000",
+    "countryOfOrigin": "IN",
     "brand": {
       "@type": "Brand",
       "name": "Nashik Fruit and Vegetable Company"
@@ -54,15 +56,45 @@ export default function TomatoProductPage() {
       "url": "https://nashikfruitandvegetable.com/tomato-supplier-from-nashik/",
       "priceCurrency": "USD",
       "price": "0.00",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "price": "0.00",
-        "priceCurrency": "USD",
-        "valueAddedTaxIncluded": "false"
-      },
       "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
+      "itemCondition": "https://schema.org/NewCondition",
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "USD"
+        },
+        "shippingDestination": [
+          { "@type": "DefinedRegion", "addressCountry": "AE" },
+          { "@type": "DefinedRegion", "addressCountry": "MY" },
+          { "@type": "DefinedRegion", "addressCountry": "LK" }
+        ]
+      }
     }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What maturity stage are tomatoes harvested for export?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Export tomatoes are harvested at the Turning / Breaker maturity stage (light pinkish-orange) so they reach peak deep red color and firm texture during transit without softening."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What temperature are tomatoes transported in reefer containers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Refrigerated reefer containers are set to +10°C to +12°C with 85-90% Relative Humidity to preserve cellular firmness and prevent chilling injury."
+        }
+      }
+    ]
   };
 
   return (
@@ -74,6 +106,10 @@ export default function TomatoProductPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         

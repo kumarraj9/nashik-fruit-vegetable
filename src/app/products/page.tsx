@@ -31,11 +31,69 @@ export default function ProductsPage() {
     ]
   };
 
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Nashik Export Produce Catalog",
+    "description": "B2B Export list of agricultural commodities sourced from Nashik, Maharashtra",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Nashik Red Onion (HS Code 07031010)",
+        "url": "https://nashikfruitandvegetable.com/onion-exporter-from-nashik/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Fresh Tomato Grade A (HS Code 07020000)",
+        "url": "https://nashikfruitandvegetable.com/tomato-supplier-from-nashik/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Bhagwa Pomegranate (HS Code 08109010)",
+        "url": "https://nashikfruitandvegetable.com/pomegranate-supplier-from-nashik/"
+      }
+    ]
+  };
+
+  const catalogFaqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What quality grading standards are used for exported produce?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All produce undergoes automated mechanical sorting, weight sizing, color grading, and manual inspection to remove defective or sunburnt units. Onions are graded by millimeter diameter (25mm to 80mm+), tomatoes by firmness and weight, and pomegranates by gram weight (200g-350g+)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can importers order mixed commodity containers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we support multi-product mixed container loads (e.g. combined shipments of onions and pomegranates) provided temperature and humidity compatibility is aligned."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd] py-12 sm:py-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(catalogFaqSchema) }}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}

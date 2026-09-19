@@ -114,11 +114,45 @@ export default function DubaiExportPage() {
     ]
   };
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Indian Red Onion Export Service to Dubai & UAE",
+    "serviceType": "Agricultural Commodity Export & Cold Chain Logistics",
+    "provider": {
+      "@type": "Organization",
+      "name": "Nashik Fruit and Vegetable Company"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Arab Emirates",
+      "identifier": "AE"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Dubai Onion Supply Catalog",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Product",
+            "name": "Nashik Red Onion 55mm+ (Dubai Grade A)",
+            "description": "Export quality dark red Garva onions for Jebel Ali Port discharge"
+          }
+        }
+      ]
+    }
+  };
+
   return (
     <div className="w-full bg-[#fdfdfd]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <script
         type="application/ld+json"

@@ -43,8 +43,10 @@ export default function PomegranateProductPage() {
     "@type": "Product",
     "name": "Bhagwa Pomegranate (Export Grade A)",
     "image": "https://nashikfruitandvegetable.com/images/pomegranate_export.png",
-    "description": "Premium fresh Bhagwa pomegranates from Nashik, Maharashtra. Sized 200g to 350g+, packed with foam nets in strong corrugated boxes for safe international delivery.",
+    "description": "Premium fresh Bhagwa pomegranates from Nashik, Maharashtra. Deep glossy red arils, sized 200g to 350g+, packed in protective foam nets within 3.5kg/4.5kg 5-ply corrugated boxes for sea export.",
     "sku": "POME-NSK-003",
+    "mpn": "HS-08109010",
+    "countryOfOrigin": "IN",
     "brand": {
       "@type": "Brand",
       "name": "Nashik Fruit and Vegetable Company"
@@ -54,15 +56,46 @@ export default function PomegranateProductPage() {
       "url": "https://nashikfruitandvegetable.com/pomegranate-supplier-from-nashik/",
       "priceCurrency": "USD",
       "price": "0.00",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "price": "0.00",
-        "priceCurrency": "USD",
-        "valueAddedTaxIncluded": "false"
-      },
       "availability": "https://schema.org/InStock",
-      "itemCondition": "https://schema.org/NewCondition"
+      "itemCondition": "https://schema.org/NewCondition",
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "USD"
+        },
+        "shippingDestination": [
+          { "@type": "DefinedRegion", "addressCountry": "AE" },
+          { "@type": "DefinedRegion", "addressCountry": "MY" },
+          { "@type": "DefinedRegion", "addressCountry": "SG" },
+          { "@type": "DefinedRegion", "addressCountry": "VN" }
+        ]
+      }
     }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is the Indian Bhagwa pomegranate variety preferred globally?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Bhagwa variety features glossy deep red skin, soft seeds, deep red arils, high sugar content, and thick rind insulation, providing a natural cold-storage shelf life of up to 60 days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are pomegranates packaged to prevent damage during shipping?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each fruit is individually encased in a protective plastic foam net and placed into ventilated 3.5kg or 4.5kg 5-ply heavy-duty corrugated cartons with bubble liners."
+        }
+      }
+    ]
   };
 
   return (
@@ -74,6 +107,10 @@ export default function PomegranateProductPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
