@@ -76,12 +76,18 @@ export const siteConfig = {
       imageUrl: "/images/tomato_export.png",
       whatsappText: "Hello, I want to inquire about bulk ordering fresh Tomatoes. Please send available packaging options and transit timelines.",
       specs: [
-        { parameter: "Grade", value: "Export Quality Grade A" },
-        { parameter: "Maturity Stage", value: "Turning / Breaking Red (Customized based on sea transit duration)" },
-        { parameter: "Packaging", value: "10kg / 14kg Premium Plastic or heavy-duty Corrugated Crates" },
-        { parameter: "Quality Parameters", value: "Firm texture, glossy red skin, blemish-free, zero cracking" },
-        { parameter: "Storage Conditions", value: "Ventilated container or Reefer maintained at 10-12°C" },
-        { parameter: "Minimum Order Qty (MOQ)", value: "1x20ft Reefer Container" },
+        { parameter: "HS Code", value: "07020000 (Fresh or Chilled Tomatoes)" },
+        { parameter: "Varieties", value: "Semi-Determinate & Determinate Hybrids (Abhinav, US 440, Saaho, Vaishnavi)" },
+        { parameter: "Origin", value: "Pimpalgaon Baswant & Nashik APMC Belt, Maharashtra, India" },
+        { parameter: "Maturity Stage", value: "Turning / Breaker (10-30% pink) for sea shipping, Pink / Light Red for fast transit" },
+        { parameter: "Size & Diameter", value: "40-50mm (Small), 50-60mm (Export Grade A), 60-70mm (Large Select), 70-85mm+ (Jumbo)" },
+        { parameter: "Fruit Weight", value: "80g to 160g+ per fruit (Uniform mechanical grading)" },
+        { parameter: "Fruit Firmness", value: "Pressure test > 4.5 kg/cm² (Thick pericarp walls, zero transit cracking)" },
+        { parameter: "Soluble Solids (TSS)", value: "Brix 4.5% - 5.5%, Rich natural lycopene content" },
+        { parameter: "Packaging Options", value: "10kg & 14/15kg Heavy-duty perforated plastic crates, 5kg/7kg/10kg 5-Ply Corrugated boxes" },
+        { parameter: "Container Shipping Temp", value: "+10°C to +12°C Reefer, 85-90% RH, continuous airflow (prevents chilling injury)" },
+        { parameter: "Minimum Order Qty (MOQ)", value: "1x40ft Reefer Container (approx 14 - 16 MT) or 1x20ft (approx 7 - 8 MT) or Air Freight" },
+        { parameter: "Certifications Issued", value: "APEDA Registration, FSSAI, Phytosanitary Certificate, Certificate of Origin, MRL Test" }
       ]
     },
     pomegranate: {
