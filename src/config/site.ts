@@ -38,7 +38,9 @@ export const siteConfig = {
     }
   },
   destinations: [
-    { country: "Dubai (UAE)", type: "International Sea & Air Route", transitTime: "4-5 Days", transitPort: "Jebel Ali Port" },
+    { country: "Dubai (UAE)", type: "International Sea & Air Route", transitTime: "4-5 Days", transitPort: "Jebel Ali Port / Air Cargo" },
+    { country: "Bangladesh", type: "Cross-Border Land Customs Route", transitTime: "2-3 Days", transitPort: "Petrapole - Benapole Border" },
+    { country: "Nepal", type: "Cross-Border Overland Route", transitTime: "2-3 Days", transitPort: "Raxaul - Birgunj Border" },
     { country: "Sri Lanka", type: "International Sea Route", transitTime: "5-6 Days", transitPort: "Colombo Port" },
     { country: "Malaysia", type: "International Sea Route", transitTime: "8-10 Days", transitPort: "Port Klang" },
     { country: "Domestic (India)", type: "Express Cold-Chain Land Routes", transitTime: "1-3 Days", transitPort: "All Tier-1 Hubs" },
@@ -71,10 +73,10 @@ export const siteConfig = {
       id: "tomato",
       slug: "tomato-supplier-from-nashik",
       name: "Premium Fresh Tomato",
-      tagline: "Firm-textured, glossy red tomatoes graded strictly for long-transit sea shipments.",
-      description: "Our export-grade tomatoes are harvested at the optimal maturity stage to ensure they reach international markets like Dubai and Malaysia in perfect firmness. Advanced sorting removes blemishes and prevents cracking.",
+      tagline: "Export-Quality Tomatoes Sourced from Trusted Farms in Nashik for Dubai, Bangladesh & Nepal.",
+      description: "Our export-quality tomatoes are sourced directly from trusted partner farms in the Pimpalgaon & Nashik belts. Graded strictly at breaker/turning maturity with thick pericarp walls, ensuring peak freshness across ocean sea routes to Dubai and express overland corridors to Bangladesh and Nepal.",
       imageUrl: "/images/tomato_export.png",
-      whatsappText: "Hello, I want to inquire about bulk ordering fresh Tomatoes. Please send available packaging options and transit timelines.",
+      whatsappText: "Hello, I want to inquire about bulk ordering export-quality fresh Tomatoes for Dubai / Bangladesh / Nepal. Please send pricing and transit schedules.",
       specs: [
         { parameter: "HS Code", value: "07020000 (Fresh or Chilled Tomatoes)" },
         { parameter: "Varieties", value: "Semi-Determinate & Determinate Hybrids (Abhinav, US 440, Saaho, Vaishnavi)" },

@@ -21,24 +21,29 @@ import {
   HelpCircle,
   TrendingUp,
   MapPin,
-  Check
+  Check,
+  Sprout,
+  Users,
+  Compass
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import DailyRatesSection from "@/components/DailyRatesSection";
 
 export const metadata: Metadata = {
-  title: "Nashik Tomato Supplier & Exporter India | Fresh Grade A Tomatoes",
-  description: "Direct exporter of Grade-A Fresh Tomatoes (Abhinav, US 440, Saaho) from Pimpalgaon Baswant & Nashik APMC. Turning/Breaker maturity stages, 40mm to 85mm+ sizing, heavy plastic crates & CFB boxes, reefer shipping to Dubai, Malaysia & GCC.",
+  title: "Export-Quality Tomatoes Sourced from Trusted Farms | Export to Dubai, Bangladesh & Nepal",
+  description: "B2B supplier of export-quality fresh tomatoes sourced directly from trusted partner farms in Nashik & Pimpalgaon. Grade A hybrid varieties (Abhinav, US 440, Saaho) at breaker/turning stage. Fast reefer sea shipping to Dubai (UAE) and express overland routes to Bangladesh and Nepal.",
   keywords: [
+    "export-quality tomatoes sourced from trusted farms",
+    "tomato export to dubai",
+    "tomato export to bangladesh",
+    "tomato export to nepal",
     "nashik tomato supplier",
     "tomato exporter from india",
     "indian fresh tomato exporter",
     "pimpalgaon tomato market export rate",
     "tomato exporters in maharashtra",
-    "grade a fresh tomato export",
-    "indian tomato export to dubai",
+    "grade a fresh tomato export india",
     "hs code 07020000 tomato",
-    "fresh tomato wholesale price india",
     "hybrid tomato supplier nashik"
   ]
 };
@@ -67,7 +72,7 @@ export default function TomatoProductPage() {
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Nashik Tomato Supplier & Exporter",
+        "name": "Export-Quality Tomatoes from Trusted Farms",
         "item": "https://nashikfruitandvegetable.com/tomato-supplier-from-nashik/"
       }
     ]
@@ -77,9 +82,9 @@ export default function TomatoProductPage() {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Fresh Tomato (Export Grade A)",
+    "name": "Export-Quality Fresh Tomato (Grade A)",
     "image": "https://nashikfruitandvegetable.com/images/tomato_export.png",
-    "description": "Premium fresh farm-grown Grade-A export tomatoes (Abhinav, US 440, Saaho hybrids) from Pimpalgaon Baswant & Nashik. Harvested at turning/breaker stage, packed in durable 10kg/15kg plastic crates or corrugated boxes for reefer container shipping.",
+    "description": "Export-quality fresh tomatoes sourced from trusted farms across the Pimpalgaon & Nashik belts. Graded at breaker/turning stage for export to Dubai (UAE), Bangladesh, and Nepal. Packed in heavy-duty 10kg/14kg plastic crates and 5kg/10kg CFB cartons.",
     "sku": "TOMATO-NSK-002",
     "mpn": "HS-07020000",
     "countryOfOrigin": "IN",
@@ -108,11 +113,13 @@ export default function TomatoProductPage() {
           "currency": "USD"
         },
         "shippingDestination": [
-          { "@type": "DefinedRegion", "addressCountry": "AE" },
-          { "@type": "DefinedRegion", "addressCountry": "MY" },
-          { "@type": "DefinedRegion", "addressCountry": "LK" },
-          { "@type": "DefinedRegion", "addressCountry": "OM" },
-          { "@type": "DefinedRegion", "addressCountry": "QA" }
+          { "@type": "DefinedRegion", "addressCountry": "AE", "name": "Dubai (UAE)" },
+          { "@type": "DefinedRegion", "addressCountry": "BD", "name": "Bangladesh" },
+          { "@type": "DefinedRegion", "addressCountry": "NP", "name": "Nepal" },
+          { "@type": "DefinedRegion", "addressCountry": "MY", "name": "Malaysia" },
+          { "@type": "DefinedRegion", "addressCountry": "LK", "name": "Sri Lanka" },
+          { "@type": "DefinedRegion", "addressCountry": "OM", "name": "Oman" },
+          { "@type": "DefinedRegion", "addressCountry": "QA", "name": "Qatar" }
         ]
       }
     }
@@ -125,46 +132,102 @@ export default function TomatoProductPage() {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What maturity stage are tomatoes harvested for international sea export?",
+        "name": "How are export-quality tomatoes sourced from trusted farms in Nashik?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Export tomatoes are harvested strictly at the Turning / Breaker maturity stage (10% to 30% pinkish tint at blossom end). This ensures maximum cellular firmness and allows natural ripening during transit so tomatoes arrive at destination ports (Dubai, Malaysia, Sri Lanka) with vibrant crimson red color, firm texture, and zero bruising."
+          "text": "We partner directly with over 200+ certified farmer clusters across the Pimpalgaon Baswant, Dindori, and Niphad agricultural belts. Our field agronomists monitor Good Agricultural Practices (GAP), drip irrigation schedules, and residue-free crop health. Tomatoes are harvested early in the morning (6:00 AM - 10:00 AM) to maintain low core pulp temperature and graded through automated packhouse sorting lines to eliminate blemishes, cracks, and blossom-end rot."
         }
       },
       {
         "@type": "Question",
-        "name": "How is chilling injury prevented in refrigerated containers?",
+        "name": "How are fresh tomatoes exported from Nashik to Dubai (UAE)?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tomatoes are sensitive to low temperatures. We maintain refrigerated reefer containers at precisely +10°C to +12°C (+50°F to +54°F) with 85% to 90% Relative Humidity and continuous air circulation (15-20 CBM/hr). Setting temperatures below +10°C can cause chilling injury, loss of aroma, and uneven ripening."
+          "text": "For Dubai, shipments depart from JNPT / Nhava Sheva Port, Mumbai via 40ft High Cube refrigerated reefer containers arriving at Jebel Ali Port in 4 to 6 days. We set container temperatures strictly at +10°C to +12°C with 85-90% Relative Humidity. For urgent hotel and retail hypermarket orders, express air freight consignments land at Dubai International (DXB) within 24 to 48 hours."
         }
       },
       {
         "@type": "Question",
-        "name": "Which packaging options are available for wholesale tomato shipments?",
+        "name": "What is the procedure and transit time for tomato export to Bangladesh?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We provide heavy-duty ventilated plastic crates (10kg, 14kg, and 15kg) with interlocking stacking ribs that prevent fruit crushing during sea transit. For air cargo and premium hypermarkets, we supply 5-ply/7-ply corrugated CFB boxes (5kg, 7kg, 10kg) and 500g/1kg retail punnets."
+          "text": "Tomato exports to Bangladesh operate via express cross-border road logistics. Ventilated and refrigerated trucks travel from our Nashik packhouses directly to Petrapole - Benapole Land Customs Station (LCS), Ghojadanga, or Hili border checkpoints within 2 to 3 days, feeding wholesale markets in Dhaka, Chittagong, and Khulna with unbroken freshness."
         }
       },
       {
         "@type": "Question",
-        "name": "What is the container loading capacity and Minimum Order Quantity (MOQ)?",
+        "name": "How are fresh tomatoes shipped from Nashik to Nepal?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Our standard export MOQ is 1x40ft High Cube Reefer Container, which accommodates approximately 1,400 to 1,600 plastic crates (14 to 16 metric tonnes). We also load 1x20ft Reefer Containers (approx 7 to 8 metric tonnes) and air freight pallet consignments for urgent wholesale requirements."
+          "text": "For Nepal, tomatoes are transported via direct overland logistics corridors through Raxaul - Birgunj and Sonauli - Bhairahawa border crossings. Transit takes approximately 2 to 3 days to reach the Kalimati Fruit & Vegetable Market in Kathmandu and Pokhara, utilizing high-durability plastic crates engineered for mountain road transport."
         }
       },
       {
         "@type": "Question",
-        "name": "What statutory export documents accompany each tomato shipment?",
+        "name": "What maturity stage is best for export to Dubai, Bangladesh, and Nepal?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Every shipment includes an APEDA Registration Certificate, Government Phytosanitary Health Certificate, Chamber of Commerce Certificate of Origin, FSSAI Food Safety License, NABL-accredited Pesticide Residue (MRL) Lab Analysis Report, Bill of Lading, Packing List, and Commercial Invoice."
+          "text": "We recommend the 'Breaker / Turning' stage (10% to 30% pink tint at the blossom end) for sea voyages to Dubai and long overland routes to Bangladesh and Nepal. This guarantees maximum cellular firmness during travel and allows the fruit to naturally transition to vibrant crimson red upon arrival at destination markets."
         }
       }
     ]
   };
+
+  const keyExportMarkets = [
+    {
+      country: "Dubai (UAE) & Gulf",
+      flag: "🇦🇪",
+      routeType: "Ocean Reefer & Air Cargo",
+      transit: "4 - 6 Days (Sea) | 24 - 48 Hrs (Air)",
+      port: "Jebel Ali Port / Dubai Int'l (DXB)",
+      packaging: "10kg / 14kg Plastic Crates & 5kg CFB Boxes",
+      desc: "Direct reefer container shipments out of JNPT Nhava Sheva. Microclimate managed at +10°C to +12°C to prevent chilling injury, arriving with perfect gloss and firmness for supermarkets and Horeca buyers.",
+      highlight: true
+    },
+    {
+      country: "Bangladesh",
+      flag: "🇧🇩",
+      routeType: "Express Cross-Border Road Logistics",
+      transit: "2 - 3 Days Direct Land Route",
+      port: "Petrapole - Benapole / Ghojadanga LCS",
+      packaging: "14kg & 15kg Heavy-Duty Ventilated Crates",
+      desc: "Fast overland transit connecting Nashik packhouses directly to Dhaka, Chittagong, and Khulna mandis. Harvested at Turning stage to withstand land border customs clearance in peak condition.",
+      highlight: true
+    },
+    {
+      country: "Nepal",
+      flag: "🇳🇵",
+      routeType: "Cross-Border Overland Transport",
+      transit: "2 - 3 Days Direct Road Logistics",
+      port: "Raxaul - Birgunj & Sonauli - Bhairahawa",
+      packaging: "14kg Heavy Plastic Stackable Crates",
+      desc: "Direct overland freight to Kathmandu (Kalimati Market) and Pokhara. We load high-firmness hybrid varieties (Abhinav & US 440) specifically proven to resist hilly road vibration.",
+      highlight: true
+    }
+  ];
+
+  const trustedFarmPractices = [
+    {
+      icon: <Sprout className="w-6 h-6 text-emerald-600" />,
+      title: "200+ Contracted Farmer Clusters",
+      desc: "Direct partnerships with progressive growers across Pimpalgaon, Dindori, and Niphad. Zero middlemen, ensuring complete batch traceability from field to container."
+    },
+    {
+      icon: <Clock className="w-6 h-6 text-emerald-600" />,
+      title: "Morning Harvest (6 AM - 10 AM)",
+      desc: "Tomatoes are hand-picked in the cool early morning hours to keep core pulp temperature low, minimizing moisture loss and physiological stress before packhouse arrival."
+    },
+    {
+      icon: <ShieldCheck className="w-6 h-6 text-emerald-600" />,
+      title: "NABL MRL Residue Testing",
+      desc: "Strict adherence to international Maximum Residue Limits (MRL). Every export batch is tested in APEDA-recognized NABL laboratories for 100% food safety assurance."
+    },
+    {
+      icon: <Layers className="w-6 h-6 text-emerald-600" />,
+      title: "4-Stage Conveyor Sorting",
+      desc: "Automated cleaning, roller grading by millimeter diameter, and manual culling of sunburns, blossom-end rot, and surface abrasions. Only flawless Grade A fruits are packed."
+    }
+  ];
 
   const maturityStages = [
     {
@@ -179,8 +242,8 @@ export default function TomatoProductPage() {
       stage: "Stage 2: Breaker / Turning",
       color: "10% - 30% Pink at Blossom End",
       firmness: "Firm Export Grade (>4.5 kg/cm²)",
-      idealFor: "Middle East & SE Asia (4 - 10 Days)",
-      desc: "The international benchmark for export cargo. Develops full rich red color and optimum natural sweetness upon vessel docking in Jebel Ali, Port Klang, and Colombo without softening.",
+      idealFor: "Dubai, Bangladesh & Nepal (2 - 6 Days)",
+      desc: "The premier export benchmark. Arrives at Jebel Ali, Dhaka, and Kathmandu with vibrant crimson red color, firm bite, and maximum natural sweetness without softening.",
       badge: "Top Export Choice",
       highlight: true
     },
@@ -197,7 +260,7 @@ export default function TomatoProductPage() {
       color: "100% Deep Crimson Glossy Red",
       firmness: "Table Fresh (>3.0 kg/cm²)",
       idealFor: "Air Cargo & Hotel Supply (24 - 48 Hrs)",
-      desc: "Fully mature with peak lycopene content, intense tomato aroma, and juicy pulp. Shipped via temperature-controlled air freight directly to 5-star hotels and gourmet chains in Dubai and Gulf capitals.",
+      desc: "Fully mature with peak lycopene content, intense tomato aroma, and juicy pulp. Shipped via air cargo directly to 5-star hotels and luxury dining in Dubai and Gulf capitals.",
       badge: "Air Freight Express"
     }
   ];
@@ -207,24 +270,24 @@ export default function TomatoProductPage() {
       range: "40mm - 50mm",
       label: "Small / Catering Grade",
       weight: "70g - 90g per fruit",
-      markets: "Institutional Catering, Soups, Pickling & Canning",
-      desc: "Uniform compact diameter, dense internal locules, and thick skin. Ideal for institutional food services and commercial processing.",
+      markets: "Bangladesh Mandis, Institutional Catering, Processing",
+      desc: "Uniform compact diameter, dense internal locules, and thick skin. Highly demanded for catering and commercial food prep.",
       tag: "Catering & Processing"
     },
     {
       range: "50mm - 60mm",
       label: "Standard Export Grade A",
       weight: "90g - 120g per fruit",
-      markets: "Dubai (UAE), Saudi Arabia, Malaysia, Qatar, Oman",
+      markets: "Dubai (UAE), Saudi Arabia, Nepal, Qatar, Oman",
       desc: "The universal benchmark for commercial export. Uniform spherical/oval shape, smooth glossy rind, balanced acidity, and zero micro-cracking.",
-      tag: "Gulf & Asian Benchmark",
+      tag: "Gulf & Regional Benchmark",
       highlight: true
     },
     {
       range: "60mm - 70mm",
       label: "Large Select Grade A+",
       weight: "120g - 150g per fruit",
-      markets: "Supermarket Retail Shelves, High-End Grocery Chains",
+      markets: "Dubai Supermarkets, High-End Grocery Chains",
       desc: "Hand-graded large fruits with thick pericarp walls and high meat-to-gel ratio. Excellent table presentation for retail display cases.",
       tag: "Premium Supermarket"
     },
@@ -242,13 +305,13 @@ export default function TomatoProductPage() {
     {
       name: "Abhinav (Syngenta)",
       type: "Semi-Determinate Hybrid",
-      features: "Square-round shape, very thick fruit walls, uniform deep red, exceptional transit durability.",
-      badge: "Highest Export Share"
+      features: "Square-round shape, very thick fruit walls, uniform deep red, exceptional transit durability across mountain and sea routes.",
+      badge: "Export Standard"
     },
     {
       name: "US 440 (Nunhems)",
       type: "Determinate Bush Hybrid",
-      features: "Flat-round globe, rich lycopene red color, dense internal chambers, high firmness.",
+      features: "Flat-round globe, rich lycopene red color, dense internal chambers, high firmness preventing transit crush.",
       badge: "Firmness Standard"
     },
     {
@@ -269,14 +332,14 @@ export default function TomatoProductPage() {
     {
       title: "Perforated Plastic Crates",
       specs: "10 kg, 14 kg & 15 kg Heavy Duty",
-      desc: "Food-grade HDPE ventilated crates with interlocking structural ribs. Prevents compressive crushing of lower layers inside reefer containers.",
-      badge: "Standard Ocean Pack"
+      desc: "Food-grade HDPE ventilated crates with interlocking structural ribs. Ideal for Dubai ocean reefers and Bangladesh / Nepal road transport.",
+      badge: "Export Workhorse"
     },
     {
       title: "Corrugated CFB Cartons",
       specs: "5 kg, 7 kg & 10 kg 5-Ply / 7-Ply",
       desc: "Telescopic boxes with multi-directional ventilation eyelets, food-safe paper dividers, and moisture-resistant internal wax coating.",
-      badge: "Export Cartons"
+      badge: "Dubai Hypermarkets"
     },
     {
       title: "Retail Clamshell Punnets",
@@ -293,33 +356,34 @@ export default function TomatoProductPage() {
   ];
 
   const shippingDestinations = [
-    { destination: "Dubai (Jebel Ali / Port Rashid)", transit: "4 - 6 Days", mode: "Direct Sea Reefer" },
+    { destination: "Dubai (Jebel Ali / Port Rashid)", transit: "4 - 6 Days", mode: "Direct Sea Reefer (+10°C to +12°C)" },
+    { destination: "Dubai International (DXB Air Cargo)", transit: "24 - 48 Hours", mode: "Express Air Cold Chain" },
+    { destination: "Bangladesh (Benapole / Petrapole Border)", transit: "2 - 3 Days", mode: "Express Land Customs Road Route" },
+    { destination: "Nepal (Birgunj / Raxaul & Bhairahawa)", transit: "2 - 3 Days", mode: "Direct Overland Road Transport" },
     { destination: "Sri Lanka (Colombo Port)", transit: "3 - 4 Days", mode: "Fast Sea Reefer" },
     { destination: "Malaysia (Port Klang / Penang)", transit: "8 - 10 Days", mode: "Direct Sea Reefer" },
-    { destination: "Oman (Sohar Port) & Qatar (Hamad Port)", transit: "5 - 7 Days", mode: "Gulf Express Sea" },
-    { destination: "Air Freight (Dubai, Doha, Maldives)", transit: "24 - 48 Hours", mode: "Express Air Cold Chain" }
   ];
 
   const faqs = [
     {
-      q: "Why are Nashik and Pimpalgaon tomatoes preferred for international exports?",
-      a: "Nashik's Pimpalgaon Baswant belt possesses rich volcanic loam soils and high day-to-night temperature variations. This unique microclimate produces tomatoes with thicker pericarp fruit walls (fruit firmness > 4.5 kg/cm²), lower seed-cavity moisture, higher lycopene density, and natural resistance against cracking and vibration damage during ocean transit."
+      q: "How do you ensure export-quality tomatoes are sourced only from trusted farms?",
+      a: "Our procurement model is built on direct tie-ups with 200+ registered farmer clusters in the Pimpalgaon Baswant, Dindori, and Nashik belts. We deploy in-house agricultural supervisors who oversee seed selection (Abhinav, US 440), drip irrigation, and zero-residue pest management. Harvesting takes place exclusively in the cool morning hours (6:00 AM - 10:00 AM) to maintain low core temperature. At our packhouse, fruits undergo 4-tier sorting and roller grading to remove all blemishes and ensure only 100% Grade A tomatoes reach export containers."
     },
     {
-      q: "What is the recommended maturity stage for shipments to Dubai and the GCC?",
-      a: "For 4-6 day sea voyages out of JNPT Nhava Sheva to Jebel Ali, we recommend the 'Turning / Breaker' maturity stage (10% to 30% pinkish tint). By the time the container clears Dubai customs and reaches wholesale distribution markets, the fruit has developed an even, glossy crimson red color with complete pulp firmness."
+      q: "What is your procedure and schedule for exporting tomatoes to Dubai (UAE)?",
+      a: "For Dubai, cargo is pre-cooled at our packhouse, packed in heavy-duty 10kg/14kg ventilated plastic crates or 5kg CFB boxes, and loaded into 40ft High Cube reefer containers set to +10°C to +12°C with 85-90% RH. Containers depart from JNPT Nhava Sheva (Mumbai) and dock at Jebel Ali Port within 4 to 6 days. For urgent hypermarket or 5-star hotel requirements, express air cargo pallets fly out of Mumbai (BOM) to Dubai (DXB) within 24 to 48 hours."
     },
     {
-      q: "How do you protect tomatoes from chilling injury and rot in reefer containers?",
-      a: "Tomatoes are sensitive to chilling injury below +10°C. We maintain refrigerated reefer containers precisely at +10°C to +12°C with 85% to 90% Relative Humidity. Our technicians configure continuous air exchanges (15-20 CBM/hr) to actively vent ethylene gas and eliminate pocket moisture condensation."
+      q: "How do you handle fresh tomato exports to Bangladesh?",
+      a: "We operate dedicated cross-border road logistics from Nashik to Bangladesh. Trucks loaded with 14kg/15kg heavy plastic crates transit via National Highway corridors directly to Land Customs Stations (LCS) including Petrapole - Benapole, Ghojadanga, and Hili check-posts within 2 to 3 days. Tomatoes are picked at the Turning/Breaker stage so they clear border customs and reach Dhaka and Chittagong wholesale mandis in fresh, firm, and undamaged condition."
     },
     {
-      q: "Which packaging type is better: heavy plastic crates or corrugated boxes?",
-      a: "Heavy-duty ventilated plastic crates (10kg / 14kg / 15kg) are preferred for sea container shipments because their rigid interlocking construction absorbs ship vibration without crushing fruits. For air cargo consignments or retail supermarkets, 5-ply ventilated corrugated CFB cartons or 1kg punnets provide optimal branding and display aesthetics."
+      q: "How are tomatoes transported overland to Nepal?",
+      a: "For Nepal, shipments travel overland from our Pimpalgaon sorting centers through the Raxaul - Birgunj border and Sonauli - Bhairahawa border checkpoints. Total transit time is approximately 2 to 3 days to Kathmandu's Kalimati Fruit & Vegetable Market and Pokhara. We specifically select thick-walled hybrid varieties (Abhinav and US 440) that resist compression and vibration over hilly roads."
     },
     {
-      q: "What export documentation is provided with every consignment?",
-      a: "Every shipment includes a full statutory documentation set: APEDA Registration, Government Phytosanitary Health Certificate, Chamber of Commerce Certificate of Origin, FSSAI License, NABL-accredited MRL Pesticide Residue Analysis Report, Ocean Bill of Lading, Packing List, and certified Commercial Invoice."
+      q: "How do you prevent chilling injury and skin decay during refrigerated transport?",
+      a: "Tomatoes are sensitive to cold shock. Exposure to temperatures below +10°C causes chilling injury, surface pitting, and failure to ripen evenly. We maintain refrigerated reefer containers strictly at +10°C to +12°C with 85% to 90% Relative Humidity. Our technicians configure continuous air exchanges (15-20 CBM/hr) to actively vent ethylene gas and prevent moisture condensation inside the container."
     }
   ];
 
@@ -364,13 +428,16 @@ export default function TomatoProductPage() {
             <div className="relative h-[24rem] sm:h-[32rem] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-xl group">
               <Image
                 src={product.imageUrl}
-                alt="Nashik Fresh Tomato Export Quality Grade A"
+                alt="Export-Quality Tomatoes Sourced from Trusted Farms in Nashik"
                 fill
                 priority
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-md shadow-lg border border-white/20">
-                Direct from Pimpalgaon APMC Belt
+                Sourced from Trusted Farms
+              </div>
+              <div className="absolute bottom-4 left-4 bg-emerald-950/80 backdrop-blur-md text-emerald-300 text-[11px] font-bold px-3 py-1.5 rounded-lg border border-emerald-500/30">
+                Export to Dubai • Bangladesh • Nepal
               </div>
               <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg border border-white/10">
                 HS Code: 07020000
@@ -389,17 +456,17 @@ export default function TomatoProductPage() {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                 <div className="space-y-1">
-                  <span className="text-slate-400 font-bold block text-[10px] uppercase">Loading Port</span>
+                  <span className="text-slate-400 font-bold block text-[10px] uppercase">Loading Points</span>
                   <span className="font-semibold text-slate-800 flex items-center">
                     <MapPin className="w-3.5 h-3.5 text-accent mr-1 shrink-0" />
-                    JNPT / Nhava Sheva (Mumbai)
+                    JNPT Mumbai / Land Borders
                   </span>
                 </div>
                 <div className="space-y-1">
                   <span className="text-slate-400 font-bold block text-[10px] uppercase">Lead Time</span>
                   <span className="font-semibold text-slate-800 flex items-center">
                     <Clock className="w-3.5 h-3.5 text-accent mr-1 shrink-0" />
-                    3 - 5 Days from Order Confirmation
+                    2 - 4 Days from Order Confirmation
                   </span>
                 </div>
                 <div className="space-y-1">
@@ -410,10 +477,10 @@ export default function TomatoProductPage() {
                   </span>
                 </div>
                 <div className="space-y-1">
-                  <span className="text-slate-400 font-bold block text-[10px] uppercase">Container Load</span>
+                  <span className="text-slate-400 font-bold block text-[10px] uppercase">Export Routes</span>
                   <span className="font-semibold text-slate-800 flex items-center">
-                    <Package className="w-3.5 h-3.5 text-accent mr-1 shrink-0" />
-                    14 - 16 MT per 40ft HC (Crates)
+                    <Compass className="w-3.5 h-3.5 text-accent mr-1 shrink-0" />
+                    Dubai (Sea/Air) • BD & NP (Road)
                   </span>
                 </div>
               </div>
@@ -425,12 +492,12 @@ export default function TomatoProductPage() {
             <div className="space-y-4">
               <div className="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-emerald-200">
                 <Sparkles className="w-3.5 h-3.5 text-accent" />
-                <span>India's Leading Tomato Production Belt</span>
+                <span>Export-Quality Tomatoes Sourced from Trusted Farms</span>
               </div>
               
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 font-display tracking-tight leading-tight">
-                Nashik Tomato Supplier & Exporter <br />
-                <span className="text-emerald-700">Direct From India</span>
+                Nashik Fresh Tomato Supplier <br />
+                <span className="text-emerald-700">Export to Dubai, Bangladesh & Nepal</span>
               </h1>
               
               <p className="text-sm font-bold text-accent uppercase tracking-wide">
@@ -444,10 +511,10 @@ export default function TomatoProductPage() {
               <div className="p-4 rounded-xl bg-amber-50/80 border border-amber-200/80 text-amber-900 text-xs leading-relaxed space-y-1">
                 <span className="font-bold block text-amber-950 flex items-center">
                   <CheckCircle2 className="w-4 h-4 text-amber-700 mr-1.5 shrink-0" />
-                  Why Importers Demand Nashik & Pimpalgaon Tomatoes:
+                  Farm-Gate Freshness & Cross-Border Delivery:
                 </span>
                 <p className="text-slate-700">
-                  The Pimpalgaon Baswant, Dindori, and Nashik belts form Asia's preeminent tomato cultivation corridor. Fertile Deccan volcanic soil coupled with wide diurnal temperature differences fosters thick pericarp fruit walls (fruit firmness pressure &gt; 4.5 kg/cm²), dense internal locules, low free-moisture leakage, and high natural lycopene. This eliminates transit cracking and pressure damage during reefer ocean voyages to Dubai, the GCC, and Southeast Asia.
+                  Every batch of export-quality tomatoes is sourced directly from trusted partner farms in Pimpalgaon Baswant and Nashik. With thick pericarp fruit walls (fruit firmness pressure &gt; 4.5 kg/cm²), dense internal chambers, and balanced acidity, our tomatoes maintain peak cellular firmness during ocean reefer voyages to <strong>Dubai (UAE)</strong> and express cross-border road transits to <strong>Bangladesh</strong> and <strong>Nepal</strong>.
                 </p>
               </div>
             </div>
@@ -455,8 +522,8 @@ export default function TomatoProductPage() {
             {/* Price Quote CTA Box */}
             <div className="bg-[#022c22] text-white p-6 sm:p-8 rounded-2xl border border-emerald-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 card-shadow">
               <div className="space-y-1.5 text-center md:text-left">
-                <h3 className="font-bold text-base uppercase tracking-wider text-emerald-300 font-display">Get Current FOB / CIF Container Quote</h3>
-                <p className="text-xs text-slate-300 font-sans">Direct pricing out of JNPT Nhava Sheva based on your maturity stage, packaging style, and target port.</p>
+                <h3 className="font-bold text-base uppercase tracking-wider text-emerald-300 font-display">Get Current FOB / CIF Container & Truck Quote</h3>
+                <p className="text-xs text-slate-300 font-sans">Direct quotes for shipments to Dubai (Jebel Ali / Air Cargo), Bangladesh (Benapole Border), and Nepal (Birgunj Border).</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
                 <a
@@ -478,57 +545,113 @@ export default function TomatoProductPage() {
               </div>
             </div>
 
-            {/* Quality Commitment Quick Highlights */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-              <div className="bg-white p-3 rounded-xl border border-slate-200 text-center space-y-1 shadow-sm">
-                <span className="text-[10px] text-slate-400 uppercase font-bold block">Purity</span>
-                <span className="text-xs font-bold text-slate-800">100% Grade A</span>
+            {/* Quick Export Corridor Pills */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div className="bg-white p-3.5 rounded-xl border border-slate-200 text-center space-y-1 shadow-sm">
+                <span className="text-xl block">🇦🇪</span>
+                <span className="text-xs font-bold text-slate-900 block">Export to Dubai (UAE)</span>
+                <span className="text-[10px] text-emerald-700 font-medium">Jebel Ali Sea & Air Cargo</span>
               </div>
-              <div className="bg-white p-3 rounded-xl border border-slate-200 text-center space-y-1 shadow-sm">
-                <span className="text-[10px] text-slate-400 uppercase font-bold block">Maturity</span>
-                <span className="text-xs font-bold text-emerald-700">Breaker / Turning</span>
+              <div className="bg-white p-3.5 rounded-xl border border-slate-200 text-center space-y-1 shadow-sm">
+                <span className="text-xl block">🇧🇩</span>
+                <span className="text-xs font-bold text-slate-900 block">Export to Bangladesh</span>
+                <span className="text-[10px] text-emerald-700 font-medium">Petrapole-Benapole LCS</span>
               </div>
-              <div className="bg-white p-3 rounded-xl border border-slate-200 text-center space-y-1 shadow-sm">
-                <span className="text-[10px] text-slate-400 uppercase font-bold block">Defects</span>
-                <span className="text-xs font-bold text-slate-800">&lt; 1% Tolerance</span>
-              </div>
-              <div className="bg-white p-3 rounded-xl border border-slate-200 text-center space-y-1 shadow-sm">
-                <span className="text-[10px] text-slate-400 uppercase font-bold block">Residue</span>
-                <span className="text-xs font-bold text-emerald-700">MRL Tested</span>
+              <div className="bg-white p-3.5 rounded-xl border border-slate-200 text-center space-y-1 shadow-sm">
+                <span className="text-xl block">🇳🇵</span>
+                <span className="text-xs font-bold text-slate-900 block">Export to Nepal</span>
+                <span className="text-[10px] text-emerald-700 font-medium">Birgunj & Bhairahawa Land Borders</span>
               </div>
             </div>
           </div>
 
         </div>
 
-        {/* SECTION 2: Pimpalgaon Origin Stats Banner */}
-        <section className="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl border border-slate-800">
+        {/* SECTION 2: Major Export Corridors Spotlight (Dubai, Bangladesh, Nepal) */}
+        <section className="space-y-6">
+          <div className="space-y-2">
+            <div className="inline-flex items-center space-x-2 text-xs font-bold text-primary uppercase tracking-widest">
+              <Globe2 className="w-4 h-4 text-accent" />
+              <span>Dedicated Trade Lanes</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">
+              Primary Export Destinations: Dubai, Bangladesh & Nepal
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm max-w-3xl leading-relaxed">
+              We specialize in synchronized logistics connecting Nashik packhouses directly with major consumption centers across the Middle East and neighboring South Asian nations.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {keyExportMarkets.map((market, idx) => (
+              <div 
+                key={idx}
+                className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-4 flex flex-col justify-between"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-3xl">{market.flag}</span>
+                    <span className="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-md uppercase tracking-wider">
+                      {market.routeType}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold font-display text-slate-900">
+                    {market.country}
+                  </h3>
+                  <div className="text-xs font-semibold text-emerald-700 flex items-center">
+                    <Clock className="w-3.5 h-3.5 mr-1 text-accent shrink-0" />
+                    <span>Transit: {market.transit}</span>
+                  </div>
+                  <div className="text-xs font-medium text-slate-500 flex items-center">
+                    <MapPin className="w-3.5 h-3.5 mr-1 text-slate-400 shrink-0" />
+                    <span>Entry: {market.port}</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed font-sans pt-1">
+                    {market.desc}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 text-[11px] text-slate-500 space-y-1">
+                  <span className="font-bold text-slate-700 block">Recommended Packaging:</span>
+                  <span>{market.packaging}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* SECTION 3: Sourced from Trusted Farms (Quality Foundation) */}
+        <section className="bg-emerald-950 text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-2xl border border-emerald-800">
           <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-800">
-            <div className="space-y-2 pt-4 md:pt-0">
-              <div className="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-display">400,000+ MT</div>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-300">Annual Regional Output</p>
-              <p className="text-[11px] text-slate-400">Maharashtra's premier tomato belt</p>
+          <div className="relative z-10 space-y-8">
+            <div className="space-y-2 max-w-3xl">
+              <div className="inline-flex items-center space-x-2 text-xs font-bold text-amber-400 uppercase tracking-widest">
+                <Sprout className="w-4 h-4 text-amber-400" />
+                <span>Agricultural Excellence</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold font-display">
+                Export-Quality Tomatoes Sourced from Trusted Farms
+              </h2>
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                Consistency is the cornerstone of our export business. We cultivate long-standing grower partnerships across the Nashik and Pimpalgaon agricultural belts, ensuring every harvest meets stringent international quality, residue, and sizing standards.
+              </p>
             </div>
-            <div className="space-y-2 pt-4 md:pt-0">
-              <div className="text-3xl sm:text-4xl font-extrabold text-amber-400 font-display">Pimpalgaon</div>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-300">Asia's Key Tomato APMC</p>
-              <p className="text-[11px] text-slate-400">Daily auction hub & modern packhouses</p>
-            </div>
-            <div className="space-y-2 pt-4 md:pt-0">
-              <div className="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-display">15 - 20 Days</div>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-300">Reefer Transit Shelf Life</p>
-              <p className="text-[11px] text-slate-400">Maintained under +10°C to +12°C</p>
-            </div>
-            <div className="space-y-2 pt-4 md:pt-0">
-              <div className="text-3xl sm:text-4xl font-extrabold text-amber-400 font-display">&gt; 4.5 kg/cm²</div>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-300">Fruit Firmness Pressure</p>
-              <p className="text-[11px] text-slate-400">Thick pericarp with zero transit cracking</p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {trustedFarmPractices.map((practice, idx) => (
+                <div key={idx} className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-3 backdrop-blur-sm">
+                  <div className="p-2.5 bg-emerald-500/20 rounded-xl w-fit border border-emerald-500/30">
+                    {practice.icon}
+                  </div>
+                  <h3 className="text-sm font-bold font-display text-white">{practice.title}</h3>
+                  <p className="text-xs text-slate-300 leading-relaxed font-sans">{practice.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* SECTION 3: 4-Stage Maturity & Color Harvest Guide */}
+        {/* SECTION 4: 4-Stage Maturity & Color Harvest Guide */}
         <section className="space-y-6">
           <div className="space-y-2">
             <div className="inline-flex items-center space-x-2 text-xs font-bold text-primary uppercase tracking-widest">
@@ -539,7 +662,7 @@ export default function TomatoProductPage() {
               Export Ripeness & Harvesting Stages
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm max-w-3xl leading-relaxed">
-              We harvest strictly according to USDA & international color stage classifications. By synchronizing harvest maturity with ocean transit duration, tomatoes arrive at destination ports in prime crimson red condition with complete firmness.
+              We harvest strictly according to USDA & international color classifications. By matching fruit maturity to the specific destination transit window (Dubai sea vs. Bangladesh overland road), tomatoes arrive at destination markets with optimal firmness and uniform red coloration.
             </p>
           </div>
 
@@ -578,7 +701,7 @@ export default function TomatoProductPage() {
                     <span className="font-semibold text-emerald-400">{stage.firmness}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="font-bold">Best Transit:</span>
+                    <span className="font-bold">Best Route:</span>
                     <span>{stage.idealFor}</span>
                   </div>
                 </div>
@@ -587,7 +710,7 @@ export default function TomatoProductPage() {
           </div>
         </section>
 
-        {/* SECTION 4: Size & Mechanical Export Grading Grid */}
+        {/* SECTION 5: Size & Mechanical Export Grading Grid */}
         <section className="space-y-6">
           <div className="space-y-2">
             <div className="inline-flex items-center space-x-2 text-xs font-bold text-primary uppercase tracking-widest">
@@ -598,7 +721,7 @@ export default function TomatoProductPage() {
               Export Caliber & Diameter Classifications
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm max-w-3xl leading-relaxed">
-              Automated mechanical roller sizers sort fresh tomatoes by millimeter diameter and weight. This guarantees 100% uniformity per box to satisfy retail and food-service quality audits in the Gulf, SE Asia, and Europe.
+              Automated mechanical roller sizers sort fresh tomatoes by millimeter diameter and weight. This guarantees 100% uniformity per box to satisfy retail and food-service quality audits in Dubai, Bangladesh, Nepal, and Southeast Asia.
             </p>
           </div>
 
@@ -641,7 +764,7 @@ export default function TomatoProductPage() {
           </div>
         </section>
 
-        {/* SECTION 4B: Commercial Export Hybrid Varieties */}
+        {/* SECTION 5B: Commercial Export Hybrid Varieties */}
         <section className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 space-y-6 shadow-sm">
           <div className="space-y-2">
             <div className="inline-flex items-center space-x-2 text-xs font-bold text-primary uppercase tracking-widest">
@@ -649,7 +772,7 @@ export default function TomatoProductPage() {
               <span>Certified Commercial Hybrids</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">
-              Export Hybrid Varieties Cultivated in Nashik
+              Export Hybrid Varieties Cultivated on Trusted Farms
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm max-w-3xl leading-relaxed">
               We contract-grow specific global hybrid varieties known for high total soluble solids (TSS), thick rind membranes, deep red internal arils, and superior transportability.
@@ -669,14 +792,14 @@ export default function TomatoProductPage() {
                 </div>
                 <div className="pt-2 border-t border-slate-200 text-[10px] font-bold text-emerald-700 flex items-center">
                   <Check className="w-3.5 h-3.5 mr-1 text-accent" />
-                  <span>Sea Transit Qualified</span>
+                  <span>Sea & Overland Qualified</span>
                 </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* SECTION 5: Bulk Packaging Options & Private Labeling */}
+        {/* SECTION 6: Bulk Packaging Options & Private Labeling */}
         <section className="bg-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200/80 space-y-8">
           <div className="space-y-2 text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center space-x-2 text-xs font-bold text-primary uppercase tracking-widest">
@@ -687,7 +810,7 @@ export default function TomatoProductPage() {
               Export Crates, Cartons & Private Labeling
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-              Because tomatoes are tender fruits, our packaging engineering focuses on zero compressive load on fruit skin and continuous airflow dissipation to preserve freshness.
+              Because tomatoes are tender fruits, our packaging engineering focuses on zero compressive load on fruit skin and continuous airflow dissipation to preserve freshness across road and sea routes.
             </p>
           </div>
 
@@ -709,7 +832,7 @@ export default function TomatoProductPage() {
           </div>
         </section>
 
-        {/* SECTION 6: Reefer Container Shipping & Destination Transit Times */}
+        {/* SECTION 7: Reefer Container Shipping & Destination Transit Times */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left: Container Cold Chain Settings */}
@@ -747,30 +870,30 @@ export default function TomatoProductPage() {
             </div>
 
             <div className="pt-4 border-t border-emerald-800 text-[11px] text-slate-300 flex items-center justify-between">
-              <span>Departure Port: <strong>JNPT (Nhava Sheva, Mumbai)</strong></span>
+              <span>Loading: <strong>JNPT Mumbai & Land Customs Points</strong></span>
               <span className="text-amber-400 font-bold">Pre-Cooled Cargo</span>
             </div>
           </div>
 
-          {/* Right: Sea & Air Transit Routes */}
+          {/* Right: Sea, Road & Air Transit Routes */}
           <div className="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 space-y-6 flex flex-col justify-between shadow-sm">
             <div className="space-y-4">
               <div className="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-emerald-200">
                 <Globe2 className="w-4 h-4 text-accent" />
-                <span>Primary Export Lanes</span>
+                <span>Multimodal Export Lanes</span>
               </div>
               <h3 className="text-2xl font-extrabold text-slate-900 font-display">
-                Fast Ocean & Air Transit Times
+                Fast Ocean, Road & Air Transit Times
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed font-sans">
-                Our facilities sit directly on the Mumbai-Agra National Highway with rapid 4-hour corridor access to JNPT port terminals and Mumbai Air Cargo.
+                Our facilities sit on the Mumbai-Agra National Highway corridor, allowing quick 4-hour transfers to JNPT port terminals and direct access to overland freight corridors for Bangladesh and Nepal.
               </p>
 
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {shippingDestinations.map((dest, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-200/60 text-xs">
+                  <div key={idx} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/60 text-xs">
                     <div className="font-bold text-slate-900 flex items-center">
-                      <Ship className="w-4 h-4 text-emerald-600 mr-2 shrink-0" />
+                      <Truck className="w-4 h-4 text-emerald-600 mr-2 shrink-0" />
                       {dest.destination}
                     </div>
                     <div className="text-right">
@@ -783,20 +906,20 @@ export default function TomatoProductPage() {
             </div>
 
             <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-100">
-              * Measured from vessel sail or air pallet clearance at Mumbai. Pre-cooling documentation issued.
+              * Measured from dispatch at Nashik packhouse to port docking or border customs clearance.
             </div>
           </div>
 
         </section>
 
-        {/* SECTION 7: Comprehensive Parameter Specs Table */}
+        {/* SECTION 8: Comprehensive Parameter Specs Table */}
         <section className="space-y-6">
           <div className="space-y-2">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display border-l-4 border-accent pl-3">
               Full Technical Product Specifications
             </h2>
             <p className="text-slate-600 text-xs sm:text-sm max-w-3xl leading-relaxed">
-              Consolidated specification matrix for quality control inspectors, quarantine officers, and commercial import procurement managers.
+              Consolidated specification matrix for quality control inspectors, quarantine officers, and commercial import procurement managers in Dubai, Bangladesh, and Nepal.
             </p>
           </div>
           
@@ -820,7 +943,7 @@ export default function TomatoProductPage() {
           </div>
         </section>
 
-        {/* SECTION 8: Document Checklist & Trade Certifications */}
+        {/* SECTION 9: Document Checklist & Trade Certifications */}
         <section className="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 space-y-6 border border-slate-800 shadow-xl">
           <div className="space-y-2">
             <div className="inline-flex items-center space-x-2 text-xs font-bold text-emerald-400 uppercase tracking-widest">
@@ -831,7 +954,7 @@ export default function TomatoProductPage() {
               Export Compliance & Documentation Pack
             </h2>
             <p className="text-slate-300 text-xs sm:text-sm max-w-3xl leading-relaxed">
-              Every container consignment is cleared with full regulatory documentation to ensure hassle-free port clearance at Jebel Ali, Port Klang, Colombo, and regional entry points.
+              Every container and truckload consignment is cleared with full regulatory documentation to ensure seamless clearance at Jebel Ali, Benapole, Birgunj, and regional customs checkpoints.
             </p>
           </div>
 
@@ -874,14 +997,14 @@ export default function TomatoProductPage() {
             <div className="bg-slate-800/80 p-4 rounded-xl border border-slate-700 flex items-start space-x-3">
               <Check className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
               <div>
-                <span className="font-bold text-white block">Ocean B/L & Commercial Invoice</span>
-                <span className="text-slate-400 text-[11px]">Seaway Bill, Packing List & Proforma Invoice</span>
+                <span className="font-bold text-white block">B/L & Border Consignment Notes</span>
+                <span className="text-slate-400 text-[11px]">Ocean Bill of Lading, Truck Lorry Receipts & PI</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 9: B2B Frequently Asked Questions */}
+        {/* SECTION 10: B2B Frequently Asked Questions */}
         <section className="space-y-6">
           <div className="space-y-2">
             <div className="inline-flex items-center space-x-2 text-xs font-bold text-primary uppercase tracking-widest">
