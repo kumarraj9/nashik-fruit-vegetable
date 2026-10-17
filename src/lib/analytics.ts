@@ -30,6 +30,32 @@ export const trackEvent = (eventName: string, params: Record<string, any> = {}) 
   }
 };
 
+export interface LeadRecord {
+  id: string;
+  timestamp: string;
+  type: "whatsapp" | "form" | "call";
+  commodity: string;
+  placement: string;
+  destination?: string;
+  volume?: string;
+}
+
+const saveLeadRecord = (record: Omit<LeadRecord, "id" | "timestamp">) => {
+  if (typeof window === "undefined") return;
+  try {
+    const existing = JSON.parse(localStorage.getItem("nashik_b2b_leads") || "[]");
+    const newLead: LeadRecord = {
+      id: "LEAD-" + Date.now().toString(36).toUpperCase(),
+      timestamp: new Date().toISOString(),
+      ...record,
+    };
+    const updated = [newLead, ...existing].slice(0, 50);
+    localStorage.setItem("nashik_b2b_leads", JSON.stringify(updated));
+  } catch (e) {
+    // Ignore storage errors
+  }
+};
+
 /**
  * Standard GA4 generate_lead conversion event
  */
@@ -42,6 +68,14 @@ export const trackGenerateLead = (
     currency: "USD",
     value: 1, // Positive lead signal for Google Analytics / Google Ads conversion bidding
     ...details,
+  });
+
+  saveLeadRecord({
+    type: leadType,
+    commodity: details.commodity || (leadType === "call" ? "Trade Desk Call" : "General Export Inquiry"),
+    placement: details.placement || (typeof window !== "undefined" ? window.location.pathname : "Website"),
+    destination: details.destination,
+    volume: details.volume,
   });
 };
 
