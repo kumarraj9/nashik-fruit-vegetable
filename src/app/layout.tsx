@@ -154,6 +154,9 @@ export default function RootLayout({
       className={`${outfit.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
       <head>
+        {/* Force all page links to open in a new tab */}
+        <base target="_blank" />
+
         {/* Google Analytics GA4 */}
         <script
           async
@@ -169,6 +172,21 @@ export default function RootLayout({
             `,
           }}
         />
+
+        {/* Microsoft Clarity Tracking */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "yz1dzw697i");
+            `,
+          }}
+        />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
