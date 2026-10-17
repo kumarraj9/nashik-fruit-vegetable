@@ -1,0 +1,5 @@
+# Protect sensitive vault data file from direct browser access
+<Files "leads_vault.json">
+    Order allow,deny
+    Deny from all
+</Files>

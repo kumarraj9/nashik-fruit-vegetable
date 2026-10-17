@@ -4,6 +4,9 @@
  * Protected Lead Storage for Form Submissions, WhatsApp & Phone Inquiries
  */
 
+error_reporting(0);
+ini_set('display_errors', '0');
+
 header('Content-Type: application/json; charset=UTF-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
@@ -14,11 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-$DATA_FILE = __DIR__ . '/leads_vault.php';
+$DATA_FILE = __DIR__ . '/leads_vault.json';
 $ADMIN_PIN = '2026';
+$MAGIC_PREFIX = "/* NFV_VAULT_PROTECTED */\n";
 
-// Helper: Read leads safely from vault
-function read_leads($file) {
+function read_leads($file, $prefix) {
     if (!file_exists($file)) {
         return [];
     }
@@ -26,22 +29,16 @@ function read_leads($file) {
     if (!$raw) {
         return [];
     }
-    // Remove PHP protection header if present: <?php http_response_code(403); exit; ?>
-    $pos = strpos($raw, '?>');
-    if ($pos !== false) {
-        $json = substr($raw, $pos + 2);
-    } else {
-        $json = $raw;
+    if (strpos($raw, $prefix) === 0) {
+        $raw = substr($raw, strlen($prefix));
     }
-    $data = @json_decode(trim($json), true);
+    $data = @json_decode(trim($raw), true);
     return is_array($data) ? $data : [];
 }
 
-// Helper: Save leads with PHP execute-protection header
-function save_leads($file, $leads) {
-    $header = "<?php http_response_code(403); exit; ?>\n";
+function save_leads($file, $leads, $prefix) {
     $json = json_encode(array_values($leads), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    return @file_put_contents($file, $header . $json, LOCK_EX) !== false;
+    return @file_put_contents($file, $prefix . $json, LOCK_EX) !== false;
 }
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -55,7 +52,7 @@ if ($method === 'GET') {
         exit;
     }
 
-    $leads = read_leads($DATA_FILE);
+    $leads = read_leads($DATA_FILE, $MAGIC_PREFIX);
     echo json_encode([
         'success' => true,
         'count' => count($leads),
@@ -74,17 +71,16 @@ if ($method === 'POST') {
             echo json_encode(['success' => false, 'error' => 'Unauthorized.']);
             exit;
         }
-        save_leads($DATA_FILE, []);
+        save_leads($DATA_FILE, [], $MAGIC_PREFIX);
         echo json_encode(['success' => true, 'message' => 'Lead store cleared successfully.']);
         exit;
     }
 
     // Otherwise, parse incoming lead payload
-    $rawInput = file_get_contents('php://input');
+    $rawInput = @file_get_contents('php://input');
     $payload = @json_decode($rawInput, true);
 
     if (!is_array($payload)) {
-        // Fallback to $_POST form-encoded if applicable
         $payload = $_POST;
     }
 
@@ -100,7 +96,7 @@ if ($method === 'POST') {
 
     $newLead = [
         'id' => 'LEAD-' . strtoupper(substr(md5(uniqid(mt_rand(), true)), 0, 8)),
-        'timestamp' => gmdate('c'), // ISO 8601
+        'timestamp' => gmdate('Y-m-d\TH:i:s\Z'),
         'type' => in_array($type, ['form', 'whatsapp', 'call']) ? $type : 'form',
         'commodity' => $commodity,
         'destination' => $destination,
@@ -113,13 +109,11 @@ if ($method === 'POST') {
         'ip' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : ''
     ];
 
-    $leads = read_leads($DATA_FILE);
-    // Prepend new lead at top
+    $leads = read_leads($DATA_FILE, $MAGIC_PREFIX);
     array_unshift($leads, $newLead);
-    // Keep up to 200 most recent leads
     $leads = array_slice($leads, 0, 200);
 
-    $saved = save_leads($DATA_FILE, $leads);
+    $saved = save_leads($DATA_FILE, $leads, $MAGIC_PREFIX);
 
     if ($saved) {
         http_response_code(200);
