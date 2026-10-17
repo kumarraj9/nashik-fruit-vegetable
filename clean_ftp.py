@@ -65,11 +65,10 @@ try:
         'onion-exporter-from-nashik',
         'tomato-supplier-from-nashik',
         'pomegranate-supplier-from-nashik',
-        'dashboard',
-        'domains'
+        'dashboard'
     ]
     for folder in nextjs_folders:
-        if folder in items_primary:
+        if folder in items_primary and folder != 'domains':
             print(f"Deleting directory in primary: {folder}")
             remove_dir_recursive(ftp, folder)
             
@@ -96,7 +95,7 @@ try:
     print("Files/folders in actual website directory before cleanup:", items_actual)
     
     for folder in nextjs_folders:
-        if folder in items_actual:
+        if folder in items_actual and folder != 'domains':
             print(f"Deleting directory in actual website folder: {folder}")
             remove_dir_recursive(ftp, folder)
             

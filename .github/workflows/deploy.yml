@@ -42,7 +42,8 @@ jobs:
           local-dir: ./out/
           # Deploy to the actual addon domain directory relative to initial login PWD (/public_html)
           server-dir: ../domains/nashikfruitandvegetable.com/public_html/
-          timeout: 120000
+          timeout: 600000
+          log-level: verbose
 
 
 
