@@ -33,7 +33,9 @@ jobs:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: python clean_ftp.py
 
-      - name: Deploy to Hostinger via FTP
+      - name: Deploy to Hostinger via FTP (Attempt 1)
+        id: deploy1
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -41,6 +43,18 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
           # Deploy to the actual addon domain directory relative to initial login PWD (/public_html)
+          server-dir: ../domains/nashikfruitandvegetable.com/public_html/
+          timeout: 600000
+          log-level: verbose
+
+      - name: Retry Deploy to Hostinger via FTP (Attempt 2)
+        if: steps.deploy1.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
           server-dir: ../domains/nashikfruitandvegetable.com/public_html/
           timeout: 600000
           log-level: verbose

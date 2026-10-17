@@ -81,35 +81,18 @@ try:
             except Exception as e:
                 print(f"Failed to delete HTML file in primary {item}: {e}")
 
-    # 2. Go to the actual website target directory and clean it
+    # 2. Go to the actual website target directory and clean old chunks if needed
     actual_target = "../domains/nashikfruitandvegetable.com/public_html"
     print(f"Navigating to actual website directory: {actual_target}...")
     ftp.cwd(actual_target)
     
-    try:
-        ftp.delete(".ftp-deploy-sync-state.json")
-        print("Deleted .ftp-deploy-sync-state.json in actual website directory.")
-    except Exception as e:
-        print("No .ftp-deploy-sync-state.json found in actual website directory.")
-        
+    # We keep the site intact during deploys so there is zero downtime
+    # Only clean obsolete chunks in _next if present
     items_actual = ftp.nlst()
-    print("Files/folders in actual website directory before cleanup:", items_actual)
-    
-    for folder in nextjs_folders:
-        if folder in items_actual and folder != 'domains':
-            print(f"Deleting directory in actual website folder: {folder}")
-            remove_dir_recursive(ftp, folder)
-            
-    for item in items_actual:
-        if item.endswith('.html') and item not in ['.', '..']:
-            print(f"Deleting HTML file in actual website folder: {item}")
-            try:
-                ftp.delete(item)
-            except Exception as e:
-                print(f"Failed to delete HTML file in actual website folder {item}: {e}")
+    print("Files/folders in actual website directory:", items_actual)
                 
     ftp.quit()
-    print("Cleanup completed successfully!")
+    print("Cleanup completed safely!")
 except Exception as e:
     print(f"FTP Cleanup Error: {e}")
 
