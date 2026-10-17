@@ -38,21 +38,42 @@ export interface LeadRecord {
   placement: string;
   destination?: string;
   volume?: string;
+  name?: string;
+  company?: string;
+  phone?: string;
+  message?: string;
 }
 
 const saveLeadRecord = (record: Omit<LeadRecord, "id" | "timestamp">) => {
   if (typeof window === "undefined") return;
+
+  const newLead: LeadRecord = {
+    id: "LEAD-" + Date.now().toString(36).toUpperCase(),
+    timestamp: new Date().toISOString(),
+    ...record,
+  };
+
+  // 1. Save locally in current browser
   try {
     const existing = JSON.parse(localStorage.getItem("nashik_b2b_leads") || "[]");
-    const newLead: LeadRecord = {
-      id: "LEAD-" + Date.now().toString(36).toUpperCase(),
-      timestamp: new Date().toISOString(),
-      ...record,
-    };
-    const updated = [newLead, ...existing].slice(0, 50);
+    const updated = [newLead, ...existing].slice(0, 100);
     localStorage.setItem("nashik_b2b_leads", JSON.stringify(updated));
   } catch (e) {
     // Ignore storage errors
+  }
+
+  // 2. Post to central PHP API backend on Hostinger server
+  try {
+    fetch("/api/leads.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(record),
+      keepalive: true,
+    }).catch(() => {
+      // Graceful fallback if offline
+    });
+  } catch (e) {
+    // Ignore fetch errors
   }
 };
 
@@ -76,6 +97,10 @@ export const trackGenerateLead = (
     placement: details.placement || (typeof window !== "undefined" ? window.location.pathname : "Website"),
     destination: details.destination,
     volume: details.volume,
+    name: details.name,
+    company: details.company,
+    phone: details.phone,
+    message: details.message,
   });
 };
 
@@ -110,6 +135,11 @@ export const trackQuoteFormSubmission = (details: {
   commodity?: string;
   destination?: string;
   volume?: string;
+  name?: string;
+  company?: string;
+  phone?: string;
+  message?: string;
+  placement?: string;
 } = {}) => {
   trackEvent("quote_form_submit", {
     ...details,

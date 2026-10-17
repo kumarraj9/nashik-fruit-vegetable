@@ -112,9 +112,14 @@ export default function ContactForm() {
 
         if (response.ok) {
           trackQuoteFormSubmission({
+            name: formData.fullName,
+            company: formData.companyName,
+            phone: formData.phone,
             commodity: selectedProductLabel,
             destination: formData.destination,
             volume: formData.volume,
+            message: formData.message,
+            placement: typeof window !== "undefined" ? window.location.pathname : "/contact-us/",
           });
           setIsSubmitted(true);
         } else {

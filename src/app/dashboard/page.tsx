@@ -16,11 +16,17 @@ import {
   Globe2, 
   Truck, 
   Ship, 
-  Plane, 
   Sparkles, 
   TrendingUp,
   RefreshCw,
-  Search
+  User,
+  Building,
+  MapPin,
+  Package,
+  Layers,
+  X,
+  Radio,
+  Settings
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { onionPrices } from "@/data/onion-prices";
@@ -31,20 +37,48 @@ export default function DashboardPage() {
   const [pinInput, setPinInput] = useState("");
   const [pinError, setPinError] = useState(false);
   const [leads, setLeads] = useState<LeadRecord[]>([]);
-  const [selectedFilter, setSelectedFilter] = useState<"all" | "whatsapp" | "call" | "form">("all");
+  const [isLoadingLeads, setIsLoadingLeads] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState<"all" | "form" | "whatsapp" | "call">("all");
+  const [activeModalLead, setActiveModalLead] = useState<LeadRecord | null>(null);
+  const [propertyId, setPropertyId] = useState("");
+  const [showPropertyIdInput, setShowPropertyIdInput] = useState(false);
 
   const DEFAULT_PIN = "2026";
 
   useEffect(() => {
     // Check if previously unlocked on this browser
     const savedAuth = localStorage.getItem("nashik_dashboard_auth");
+    const savedPropId = localStorage.getItem("nashik_ga4_property_id");
+    if (savedPropId) {
+      setPropertyId(savedPropId);
+    }
     if (savedAuth === "true") {
       setIsAuthenticated(true);
+      fetchLeads(DEFAULT_PIN);
     }
-    loadLeads();
   }, []);
 
-  const loadLeads = () => {
+  const fetchLeads = async (pin: string = DEFAULT_PIN) => {
+    setIsLoadingLeads(true);
+    try {
+      // 1. Try to fetch from server-side PHP API vault
+      const res = await fetch(`/api/leads.php?pin=${encodeURIComponent(pin)}`, {
+        cache: "no-store",
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.leads) && data.leads.length > 0) {
+          setLeads(data.leads);
+          localStorage.setItem("nashik_b2b_leads", JSON.stringify(data.leads));
+          setIsLoadingLeads(false);
+          return;
+        }
+      }
+    } catch (e) {
+      // Server API might be unavailable in local dev or network blip
+    }
+
+    // 2. Fallback to browser localStorage
     try {
       const stored = localStorage.getItem("nashik_b2b_leads");
       if (stored) {
@@ -55,19 +89,24 @@ export default function DashboardPage() {
           {
             id: "LEAD-SAMPLE-1",
             timestamp: new Date(Date.now() - 1000 * 60 * 35).toISOString(),
-            type: "whatsapp",
-            commodity: "Nashik Red Onions (FOB/CIF)",
-            placement: "/onion-exporter-from-nashik/",
-            destination: "Dubai (Jebel Ali)"
+            type: "form",
+            name: "Rashid Al-Maktoum",
+            company: "Gulf Wholesale Trading LLC",
+            phone: "+971 50 892 4110",
+            commodity: "Nashik Red Onion (Grade 55mm+)",
+            placement: "/contact-us/",
+            destination: "Dubai (Jebel Ali)",
+            volume: "29",
+            message: "Need 1x40ft reefer container CIF Jebel Ali. Provide certificate of origin and phytosanitary."
           },
           {
             id: "LEAD-SAMPLE-2",
             timestamp: new Date(Date.now() - 1000 * 60 * 120).toISOString(),
-            type: "form",
+            type: "whatsapp",
             commodity: "Export Fresh Tomato Grade A",
-            placement: "/contact-us/",
-            destination: "Bangladesh",
-            volume: "28"
+            placement: "/tomato-supplier-from-nashik/",
+            destination: "Bangladesh (Benapole)",
+            volume: "15"
           },
           {
             id: "LEAD-SAMPLE-3",
@@ -82,6 +121,8 @@ export default function DashboardPage() {
       }
     } catch (e) {
       // ignore
+    } finally {
+      setIsLoadingLeads(false);
     }
   };
 
@@ -91,6 +132,7 @@ export default function DashboardPage() {
       setIsAuthenticated(true);
       localStorage.setItem("nashik_dashboard_auth", "true");
       setPinError(false);
+      fetchLeads(pinInput);
     } else {
       setPinError(true);
     }
@@ -102,11 +144,29 @@ export default function DashboardPage() {
     setPinInput("");
   };
 
-  const handleClearLeads = () => {
-    if (confirm("Are you sure you want to clear the local inquiry log?")) {
+  const handleClearLeads = async () => {
+    if (confirm("Are you sure you want to clear all inquiries from both the server vault and local log?")) {
+      try {
+        await fetch(`/api/leads.php?action=clear&pin=${DEFAULT_PIN}`, { method: "POST" });
+      } catch (e) {
+        // ignore
+      }
       localStorage.removeItem("nashik_b2b_leads");
       setLeads([]);
     }
+  };
+
+  const handleSavePropertyId = (val: string) => {
+    const clean = val.trim();
+    setPropertyId(clean);
+    localStorage.setItem("nashik_ga4_property_id", clean);
+  };
+
+  const getRealtimeUrl = () => {
+    if (propertyId) {
+      return `https://analytics.google.com/analytics/web/#/p${propertyId}/realtime`;
+    }
+    return `https://analytics.google.com/analytics/web/#/realtime`;
   };
 
   const filteredLeads = leads.filter((lead) => {
@@ -133,7 +193,7 @@ export default function DashboardPage() {
               Export Desk Dashboard
             </h1>
             <p className="text-xs text-slate-400 font-sans">
-              Nashik Fruit & Vegetable Company Analytics Portal
+              Nashik Fruit & Vegetable Company Analytics & Leads Portal
             </p>
           </div>
 
@@ -183,24 +243,25 @@ export default function DashboardPage() {
             <div className="flex items-center space-x-2">
               <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse" />
               <span className="text-[11px] font-bold uppercase tracking-widest text-emerald-400">
-                Live Trade Desk Analytics
+                Live Trade Desk Analytics & Lead Vault
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-white">
               Executive Export Inquiries Dashboard
             </h1>
             <p className="text-xs text-slate-400">
-              Real-time buyer activity, WhatsApp quote inquiries, and Google Analytics monitoring.
+              Real-time buyer inquiries, submitted quote forms, WhatsApp chats, and Google Analytics monitoring.
             </p>
           </div>
 
           <div className="flex items-center space-x-3">
             <button
-              onClick={loadLeads}
-              className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-bold rounded-lg transition-colors flex items-center space-x-1.5"
+              onClick={() => fetchLeads(DEFAULT_PIN)}
+              disabled={isLoadingLeads}
+              className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs font-bold rounded-lg transition-colors flex items-center space-x-1.5 disabled:opacity-50"
             >
-              <RefreshCw className="w-3.5 h-3.5" />
-              <span>Refresh</span>
+              <RefreshCw className={`w-3.5 h-3.5 ${isLoadingLeads ? "animate-spin" : ""}`} />
+              <span>{isLoadingLeads ? "Syncing..." : "Refresh Leads"}</span>
             </button>
             <button
               onClick={handleLogout}
@@ -212,46 +273,74 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Live System Connectivity Ribbons */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-          <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl flex items-center justify-between">
-            <div className="flex items-center space-x-2.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <div>
-                <span className="font-bold text-slate-200 block">Google Analytics (GA4)</span>
-                <span className="text-[10px] text-slate-400 font-mono">Tag ID: G-Z618DXDCB5</span>
+        {/* ============================================================ */}
+        {/* 1-CLICK GA4 REALTIME COMMAND BANNER                           */}
+        {/* ============================================================ */}
+        <div className="relative overflow-hidden bg-gradient-to-r from-emerald-950 via-slate-900 to-slate-900 border border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+            <div className="space-y-2 max-w-2xl">
+              <div className="inline-flex items-center space-x-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider">
+                <Radio className="w-3.5 h-3.5 animate-pulse text-emerald-400" />
+                <span>100% Real-Time Live Visitors Stream</span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-black font-display text-white">
+                1-Click Google Analytics Realtime Monitor
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Watch active international buyers browsing from <strong className="text-emerald-400">Dubai, Bangladesh, Malaysia, and Nepal</strong> in real-time. Every WhatsApp click, phone call, and form submission reaches Google within <strong className="text-white">1–5 seconds</strong>.
+              </p>
+              <div className="text-[11px] text-slate-400 flex items-center space-x-2 pt-1 font-mono">
+                <span className="w-2 h-2 bg-emerald-400 rounded-full" />
+                <span>Stream ID: <strong className="text-slate-200">G-Z618DXDCB5</strong></span>
+                <span>•</span>
+                <span>Status: <strong className="text-emerald-400">Live & Broadcasting</strong></span>
               </div>
             </div>
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-              Connected
-            </span>
+
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+              <a
+                href={getRealtimeUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center space-x-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm uppercase tracking-wider py-4 px-6 rounded-2xl shadow-xl hover:shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-center"
+              >
+                <Sparkles className="w-5 h-5 fill-slate-950" />
+                <span>Open GA4 Realtime View</span>
+                <ExternalLink className="w-4 h-4 ml-1" />
+              </a>
+
+              <button
+                type="button"
+                onClick={() => setShowPropertyIdInput(!showPropertyIdInput)}
+                className="text-[11px] text-slate-400 hover:text-slate-200 text-center flex items-center justify-center space-x-1"
+              >
+                <Settings className="w-3.5 h-3.5" />
+                <span>{showPropertyIdInput ? "Hide Property Settings" : "Configure Exact GA4 Property ID"}</span>
+              </button>
+            </div>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl flex items-center justify-between">
-            <div className="flex items-center space-x-2.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <div>
-                <span className="font-bold text-slate-200 block">Search Console</span>
-                <span className="text-[10px] text-slate-400">DNS & Meta Ownership</span>
-              </div>
+          {/* Optional Property ID configuration dropdown */}
+          {showPropertyIdInput && (
+            <div className="mt-5 pt-5 border-t border-slate-800 flex flex-col sm:flex-row items-center gap-3">
+              <label htmlFor="ga4-prop-id" className="text-xs text-slate-300 shrink-0">
+                GA4 Numeric Property ID (from GA Admin):
+              </label>
+              <input
+                id="ga4-prop-id"
+                type="text"
+                placeholder="e.g., 478912345"
+                value={propertyId}
+                onChange={(e) => handleSavePropertyId(e.target.value)}
+                className="bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-lg text-xs font-mono text-white focus:outline-none focus:border-emerald-500 w-full sm:w-48"
+              />
+              <span className="text-[11px] text-slate-400">
+                (Saved in browser. Links directly to your exact GA4 property without switching accounts).
+              </span>
             </div>
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-              Verified
-            </span>
-          </div>
-
-          <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl flex items-center justify-between">
-            <div className="flex items-center space-x-2.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <div>
-                <span className="font-bold text-slate-200 block">Lead Tracking</span>
-                <span className="text-[10px] text-slate-400">generate_lead Event</span>
-              </div>
-            </div>
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-              Active
-            </span>
-          </div>
+          )}
         </div>
 
         {/* 4 Primary KPI Scorecards */}
@@ -259,7 +348,7 @@ export default function DashboardPage() {
           {/* Card 1: Total Leads */}
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-2 relative overflow-hidden group hover:border-slate-700 transition-colors">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Total B2B Leads</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Total B2B Inquiries</span>
               <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-400">
                 <BarChart3 className="w-5 h-5" />
               </div>
@@ -273,7 +362,23 @@ export default function DashboardPage() {
             </p>
           </div>
 
-          {/* Card 2: WhatsApp Leads */}
+          {/* Card 2: Quote Forms Sent (Highlighted) */}
+          <div className="bg-slate-900 border border-blue-500/30 rounded-2xl p-6 space-y-2 relative overflow-hidden group hover:border-blue-500/60 transition-colors">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-300">Form Submissions</span>
+              <div className="p-2 bg-blue-500/20 rounded-lg text-blue-400">
+                <FileText className="w-5 h-5" />
+              </div>
+            </div>
+            <div className="text-3xl sm:text-4xl font-extrabold font-display text-blue-400">
+              {formCount}
+            </div>
+            <p className="text-[11px] text-slate-400">
+              Full proforma quotation requests
+            </p>
+          </div>
+
+          {/* Card 3: WhatsApp Leads */}
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-2 relative overflow-hidden group hover:border-slate-700 transition-colors">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-400">WhatsApp Inquiries</span>
@@ -289,7 +394,7 @@ export default function DashboardPage() {
             </p>
           </div>
 
-          {/* Card 3: Direct Phone Calls */}
+          {/* Card 4: Direct Phone Calls */}
           <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-2 relative overflow-hidden group hover:border-slate-700 transition-colors">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Trade Desk Calls</span>
@@ -304,89 +409,24 @@ export default function DashboardPage() {
               Direct mobile / office dial clicks
             </p>
           </div>
-
-          {/* Card 4: Formal Quote Requests */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-2 relative overflow-hidden group hover:border-slate-700 transition-colors">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Quote Inquiries Sent</span>
-              <div className="p-2 bg-blue-500/10 rounded-lg text-blue-400">
-                <FileText className="w-5 h-5" />
-              </div>
-            </div>
-            <div className="text-3xl sm:text-4xl font-extrabold font-display text-blue-400">
-              {formCount}
-            </div>
-            <p className="text-[11px] text-slate-400">
-              Full Proforma quote submissions
-            </p>
-          </div>
         </div>
 
-        {/* 1-Click Direct Google Tools Launchpad */}
-        <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-850 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <h2 className="text-lg font-bold font-display text-white flex items-center">
-                <Sparkles className="w-4 h-4 text-accent mr-2" />
-                1-Click Official Google Analytics & Search Reports
-              </h2>
-              <p className="text-xs text-slate-400">
-                Open live Google platforms directly in a new tab without logging in or searching.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-            <a
-              href="https://analytics.google.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-800/80 p-4 rounded-2xl flex items-center justify-between transition-all group"
-            >
-              <div className="space-y-1">
-                <span className="text-xs font-bold text-emerald-300 block">Google Analytics Realtime</span>
-                <span className="text-[11px] text-slate-400 block">See live buyers on website now</span>
-              </div>
-              <ExternalLink className="w-4 h-4 text-emerald-400 group-hover:translate-x-0.5 transition-transform shrink-0" />
-            </a>
-
-            <a
-              href="https://search.google.com/search-console"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-950/80 hover:bg-blue-900 border border-blue-800/80 p-4 rounded-2xl flex items-center justify-between transition-all group"
-            >
-              <div className="space-y-1">
-                <span className="text-xs font-bold text-blue-300 block">Google Search Console</span>
-                <span className="text-[11px] text-slate-400 block">Google ranking keywords & clicks</span>
-              </div>
-              <ExternalLink className="w-4 h-4 text-blue-400 group-hover:translate-x-0.5 transition-transform shrink-0" />
-            </a>
-
-            <a
-              href="https://tagassistant.google.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-purple-950/80 hover:bg-purple-900 border border-purple-800/80 p-4 rounded-2xl flex items-center justify-between transition-all group"
-            >
-              <div className="space-y-1">
-                <span className="text-xs font-bold text-purple-300 block">Google Tag Assistant</span>
-                <span className="text-[11px] text-slate-400 block">Test GTM & GA4 tag hits</span>
-              </div>
-              <ExternalLink className="w-4 h-4 text-purple-400 group-hover:translate-x-0.5 transition-transform shrink-0" />
-            </a>
-          </div>
-        </div>
-
-        {/* Section: Live Inquiries & Leads Feed */}
+        {/* ============================================================ */}
+        {/* SECTION: SUBMITTED INQUIRIES & LEADS VAULT                   */}
+        {/* ============================================================ */}
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-lg font-bold font-display text-white">
-                Recent Buyer Inquiries & Activity Feed
-              </h2>
+              <div className="flex items-center space-x-2">
+                <h2 className="text-lg font-bold font-display text-white">
+                  Buyer Inquiries & Submitted Forms Vault
+                </h2>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                  Stored on Server
+                </span>
+              </div>
               <p className="text-xs text-slate-400">
-                Recorded whenever international buyers click WhatsApp, call, or submit quote requests.
+                Whenever anyone fills out the quote form or clicks WhatsApp, their contact details and volume requests are recorded here.
               </p>
             </div>
 
@@ -399,20 +439,20 @@ export default function DashboardPage() {
                   All ({leads.length})
                 </button>
                 <button
+                  onClick={() => setSelectedFilter("form")}
+                  className={`px-3 py-1.5 rounded-lg transition-colors ${selectedFilter === "form" ? "bg-blue-600 text-white" : "text-slate-400 hover:text-white"}`}
+                >
+                  Forms ({formCount})
+                </button>
+                <button
                   onClick={() => setSelectedFilter("whatsapp")}
                   className={`px-3 py-1.5 rounded-lg transition-colors ${selectedFilter === "whatsapp" ? "bg-emerald-600 text-white" : "text-slate-400 hover:text-white"}`}
                 >
                   WhatsApp ({whatsappCount})
                 </button>
                 <button
-                  onClick={() => setSelectedFilter("form")}
-                  className={`px-3 py-1.5 rounded-lg transition-colors ${selectedFilter === "form" ? "bg-emerald-600 text-white" : "text-slate-400 hover:text-white"}`}
-                >
-                  Forms ({formCount})
-                </button>
-                <button
                   onClick={() => setSelectedFilter("call")}
-                  className={`px-3 py-1.5 rounded-lg transition-colors ${selectedFilter === "call" ? "bg-emerald-600 text-white" : "text-slate-400 hover:text-white"}`}
+                  className={`px-3 py-1.5 rounded-lg transition-colors ${selectedFilter === "call" ? "bg-amber-600 text-white" : "text-slate-400 hover:text-white"}`}
                 >
                   Calls ({callCount})
                 </button>
@@ -422,7 +462,7 @@ export default function DashboardPage() {
                 <button
                   onClick={handleClearLeads}
                   className="p-2 text-slate-500 hover:text-red-400 hover:bg-slate-800 rounded-lg transition-colors"
-                  title="Clear Log"
+                  title="Clear Inquiries"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
@@ -433,8 +473,8 @@ export default function DashboardPage() {
           {filteredLeads.length === 0 ? (
             <div className="text-center py-12 border border-dashed border-slate-800 rounded-2xl space-y-2">
               <Clock className="w-8 h-8 text-slate-600 mx-auto" />
-              <p className="text-sm font-bold text-slate-400">No leads recorded yet under this filter</p>
-              <p className="text-xs text-slate-500">Visit any page and click WhatsApp or submit a form to see it appear here in real-time.</p>
+              <p className="text-sm font-bold text-slate-400">No inquiries recorded under this filter yet</p>
+              <p className="text-xs text-slate-500">Go to the Contact Us page, submit a form, or click WhatsApp to see it appear here immediately.</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
@@ -442,59 +482,243 @@ export default function DashboardPage() {
                 <thead>
                   <tr className="border-b border-slate-800 text-slate-400 uppercase text-[10px] tracking-wider">
                     <th className="py-3 px-4">Channel</th>
-                    <th className="py-3 px-4">Commodity / Inquiry</th>
-                    <th className="py-3 px-4">Page / Source</th>
-                    <th className="py-3 px-4">Target Market / Details</th>
+                    <th className="py-3 px-4">Buyer Name & Company</th>
+                    <th className="py-3 px-4">Commodity & Volume</th>
+                    <th className="py-3 px-4">Destination Market</th>
+                    <th className="py-3 px-4">Contact & Quick Action</th>
                     <th className="py-3 px-4 text-right">Time</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800/60 font-sans">
-                  {filteredLeads.map((lead) => (
-                    <tr key={lead.id} className="hover:bg-slate-800/40 transition-colors">
-                      <td className="py-3 px-4">
-                        {lead.type === "whatsapp" && (
-                          <span className="inline-flex items-center text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded text-[10px]">
-                            <MessageSquare className="w-3 h-3 mr-1" />
-                            WhatsApp
+                  {filteredLeads.map((lead) => {
+                    const cleanPhone = lead.phone ? lead.phone.replace(/[^0-9]/g, "") : "";
+                    const hasBuyerInfo = !!(lead.name || lead.company || lead.phone);
+
+                    return (
+                      <tr key={lead.id} className="hover:bg-slate-800/40 transition-colors">
+                        {/* Channel Badge */}
+                        <td className="py-3 px-4">
+                          {lead.type === "form" && (
+                            <span className="inline-flex items-center text-blue-400 font-bold bg-blue-500/10 border border-blue-500/30 px-2.5 py-1 rounded-md text-[10px]">
+                              <FileText className="w-3 h-3 mr-1" />
+                              Quote Form
+                            </span>
+                          )}
+                          {lead.type === "whatsapp" && (
+                            <span className="inline-flex items-center text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-md text-[10px]">
+                              <MessageSquare className="w-3 h-3 mr-1" />
+                              WhatsApp
+                            </span>
+                          )}
+                          {lead.type === "call" && (
+                            <span className="inline-flex items-center text-amber-400 font-bold bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-md text-[10px]">
+                              <Phone className="w-3 h-3 mr-1" />
+                              Phone Call
+                            </span>
+                          )}
+                        </td>
+
+                        {/* Buyer Name & Company */}
+                        <td className="py-3 px-4">
+                          {hasBuyerInfo ? (
+                            <div className="space-y-0.5">
+                              <span className="font-bold text-white block text-xs">
+                                {lead.name || "B2B Trade Buyer"}
+                              </span>
+                              {lead.company && (
+                                <span className="text-[11px] text-slate-400 flex items-center">
+                                  <Building className="w-3 h-3 mr-1 shrink-0 text-slate-500" />
+                                  {lead.company}
+                                </span>
+                              )}
+                            </div>
+                          ) : (
+                            <span className="text-slate-500 italic text-[11px]">
+                              Click from {lead.placement || "website"}
+                            </span>
+                          )}
+                        </td>
+
+                        {/* Commodity & Volume */}
+                        <td className="py-3 px-4">
+                          <span className="font-semibold text-slate-200 block">
+                            {lead.commodity}
                           </span>
-                        )}
-                        {lead.type === "form" && (
-                          <span className="inline-flex items-center text-blue-400 font-bold bg-blue-500/10 border border-blue-500/30 px-2 py-0.5 rounded text-[10px]">
-                            <FileText className="w-3 h-3 mr-1" />
-                            Quote Form
-                          </span>
-                        )}
-                        {lead.type === "call" && (
-                          <span className="inline-flex items-center text-amber-400 font-bold bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded text-[10px]">
-                            <Phone className="w-3 h-3 mr-1" />
-                            Direct Call
-                          </span>
-                        )}
-                      </td>
-                      <td className="py-3 px-4 font-semibold text-white">
-                        {lead.commodity}
-                      </td>
-                      <td className="py-3 px-4 text-slate-400 font-mono text-[11px]">
-                        {lead.placement}
-                      </td>
-                      <td className="py-3 px-4 text-slate-300">
-                        {lead.destination ? (
-                          <span className="text-emerald-400 font-semibold">{lead.destination}</span>
-                        ) : (
-                          <span className="text-slate-500">Global B2B</span>
-                        )}
-                        {lead.volume && ` • ${lead.volume} MT`}
-                      </td>
-                      <td className="py-3 px-4 text-right text-slate-400 font-mono text-[10px]">
-                        {new Date(lead.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
-                      </td>
-                    </tr>
-                  ))}
+                          {lead.volume && (
+                            <span className="text-[11px] text-emerald-400 font-mono font-bold">
+                              {lead.volume} Metric Tons
+                            </span>
+                          )}
+                        </td>
+
+                        {/* Destination */}
+                        <td className="py-3 px-4">
+                          {lead.destination ? (
+                            <span className="inline-flex items-center text-emerald-300 font-medium">
+                              <MapPin className="w-3 h-3 mr-1 text-emerald-400" />
+                              {lead.destination}
+                            </span>
+                          ) : (
+                            <span className="text-slate-500">Global Export</span>
+                          )}
+                        </td>
+
+                        {/* Contact & Quick Action */}
+                        <td className="py-3 px-4">
+                          {lead.phone ? (
+                            <div className="flex items-center space-x-2">
+                              {cleanPhone && (
+                                <a
+                                  href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent(`Hello ${lead.name || ""}, thank you for contacting Nashik Fruit and Vegetable Company regarding ${lead.commodity}. We are pleased to assist you.`)}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-[10px] font-bold inline-flex items-center transition-colors shadow-sm"
+                                  title="Reply on WhatsApp"
+                                >
+                                  <MessageSquare className="w-2.5 h-2.5 mr-1" />
+                                  Reply WhatsApp
+                                </a>
+                              )}
+                              <a
+                                href={`tel:${lead.phone}`}
+                                className="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-[10px] font-bold inline-flex items-center transition-colors"
+                                title="Call buyer directly"
+                              >
+                                <Phone className="w-2.5 h-2.5 mr-1" />
+                                Call
+                              </a>
+                              <button
+                                onClick={() => setActiveModalLead(lead)}
+                                className="px-2 py-1 bg-blue-950/60 hover:bg-blue-900 border border-blue-800/60 text-blue-300 rounded text-[10px] font-bold"
+                              >
+                                View Specs
+                              </button>
+                            </div>
+                          ) : (
+                            <button
+                              onClick={() => setActiveModalLead(lead)}
+                              className="text-[11px] text-slate-400 hover:text-white underline font-mono"
+                            >
+                              View Details
+                            </button>
+                          )}
+                        </td>
+
+                        {/* Time */}
+                        <td className="py-3 px-4 text-right text-slate-400 font-mono text-[10px]">
+                          <div>
+                            {new Date(lead.timestamp).toLocaleDateString([], { month: "short", day: "numeric" })}
+                          </div>
+                          <div>
+                            {new Date(lead.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
           )}
         </div>
+
+        {/* Lead Detail Modal */}
+        {activeModalLead && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
+              <button
+                onClick={() => setActiveModalLead(null)}
+                className="absolute top-5 right-5 text-slate-400 hover:text-white p-1 rounded-lg bg-slate-800"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 font-mono">
+                  {activeModalLead.id}
+                </span>
+                <h3 className="text-xl font-bold font-display text-white">
+                  B2B Proforma Quote Request
+                </h3>
+                <p className="text-xs text-slate-400 font-mono">
+                  Submitted {new Date(activeModalLead.timestamp).toLocaleString()}
+                </p>
+              </div>
+
+              <div className="space-y-3 bg-slate-950 p-4 rounded-2xl border border-slate-800 text-xs">
+                {activeModalLead.name && (
+                  <div className="flex justify-between border-b border-slate-800/80 pb-2">
+                    <span className="text-slate-400">Buyer Name:</span>
+                    <span className="font-bold text-white">{activeModalLead.name}</span>
+                  </div>
+                )}
+                {activeModalLead.company && (
+                  <div className="flex justify-between border-b border-slate-800/80 pb-2">
+                    <span className="text-slate-400">Company Name:</span>
+                    <span className="font-bold text-white">{activeModalLead.company}</span>
+                  </div>
+                )}
+                {activeModalLead.phone && (
+                  <div className="flex justify-between border-b border-slate-800/80 pb-2">
+                    <span className="text-slate-400">Phone / WhatsApp:</span>
+                    <span className="font-mono font-bold text-emerald-400">{activeModalLead.phone}</span>
+                  </div>
+                )}
+                <div className="flex justify-between border-b border-slate-800/80 pb-2">
+                  <span className="text-slate-400">Commodity Requested:</span>
+                  <span className="font-bold text-white">{activeModalLead.commodity}</span>
+                </div>
+                {activeModalLead.volume && (
+                  <div className="flex justify-between border-b border-slate-800/80 pb-2">
+                    <span className="text-slate-400">Required Volume:</span>
+                    <span className="font-bold text-emerald-400">{activeModalLead.volume} Metric Tons</span>
+                  </div>
+                )}
+                {activeModalLead.destination && (
+                  <div className="flex justify-between border-b border-slate-800/80 pb-2">
+                    <span className="text-slate-400">Destination Country:</span>
+                    <span className="font-bold text-white">{activeModalLead.destination}</span>
+                  </div>
+                )}
+                {activeModalLead.placement && (
+                  <div className="flex justify-between border-b border-slate-800/80 pb-2">
+                    <span className="text-slate-400">Inquiry Source Page:</span>
+                    <span className="font-mono text-slate-400">{activeModalLead.placement}</span>
+                  </div>
+                )}
+                {activeModalLead.message && (
+                  <div className="space-y-1 pt-1">
+                    <span className="text-slate-400 block">Buyer Specifications / Terms:</span>
+                    <p className="bg-slate-900 p-3 rounded-xl text-slate-200 text-xs italic leading-relaxed">
+                      "{activeModalLead.message}"
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {activeModalLead.phone && (
+                <div className="flex gap-3">
+                  <a
+                    href={`https://wa.me/${activeModalLead.phone.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(`Hello ${activeModalLead.name || ""}, thank you for your inquiry with Nashik Fruit and Vegetable Company regarding ${activeModalLead.commodity}. We are pleased to provide the quotation.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs text-center flex items-center justify-center space-x-1.5 transition-colors"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>Chat on WhatsApp</span>
+                  </a>
+                  <a
+                    href={`tel:${activeModalLead.phone}`}
+                    className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs text-center flex items-center justify-center space-x-1.5 transition-colors"
+                  >
+                    <Phone className="w-4 h-4" />
+                    <span>Call Buyer</span>
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Section: Major Export Corridors Status */}
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
