@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MessageSquare, X, Send, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { trackWhatsAppInquiry } from "@/lib/analytics";
 
 export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,11 @@ export default function WhatsAppWidget() {
     },
   ];
 
-  const handleInquiryRedirect = (text: string) => {
+  const handleInquiryRedirect = (text: string, label: string = "Custom Inquiry") => {
+    trackWhatsAppInquiry({
+      commodity: label,
+      placement: "floating_whatsapp_widget",
+    });
     const encodedText = encodeURIComponent(text);
     const url = `${whatsappBaseUrl}?text=${encodedText}`;
     window.open(url, "_blank", "noopener,noreferrer");
@@ -74,7 +79,7 @@ export default function WhatsAppWidget() {
             {quickInquiries.map((inquiry, idx) => (
               <button
                 key={idx}
-                onClick={() => handleInquiryRedirect(inquiry.text)}
+                onClick={() => handleInquiryRedirect(inquiry.text, inquiry.label)}
                 className="w-full text-left px-3.5 py-2.5 bg-white border border-slate-200 hover:border-primary-light hover:bg-emerald-50/30 rounded-xl transition-all duration-200 group flex justify-between items-center"
               >
                 <div className="pr-2">
@@ -93,7 +98,7 @@ export default function WhatsAppWidget() {
           {/* Footer Chat CTA */}
           <div className="p-3 bg-slate-50 text-center border-t border-slate-100">
             <button
-              onClick={() => handleInquiryRedirect("Hello, I am interested in sourcing fresh produce from Nashik. Please connect me with an export manager.")}
+              onClick={() => handleInquiryRedirect("Hello, I am interested in sourcing fresh produce from Nashik. Please connect me with an export manager.", "General Export Chat")}
               className="inline-flex items-center space-x-2 text-xs font-bold text-primary hover:text-primary-light transition-colors"
             >
               <Send className="w-3.5 h-3.5 text-accent" />

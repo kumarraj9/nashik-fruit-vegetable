@@ -3,6 +3,7 @@ import { Outfit, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -174,6 +175,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#fdfdfd] text-slate-900 font-sans">
+        <AnalyticsTracker />
         <Navbar />
         {/* Padding top is added to account for the fixed sticky navbar */}
         <main className="flex-grow pt-[60px] sm:pt-[95px]">{children}</main>

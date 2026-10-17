@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Send, Check, MessageSquare, AlertCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { trackQuoteFormSubmission, trackWhatsAppInquiry } from "@/lib/analytics";
 
 interface FormData {
   fullName: string;
@@ -110,6 +111,11 @@ export default function ContactForm() {
         });
 
         if (response.ok) {
+          trackQuoteFormSubmission({
+            commodity: selectedProductLabel,
+            destination: formData.destination,
+            volume: formData.volume,
+          });
           setIsSubmitted(true);
         } else {
           setErrors({ phone: "Submission failed. Please try again or use WhatsApp." });
@@ -382,6 +388,13 @@ export default function ContactForm() {
             </p>
             <a
               href={getWhatsAppForwardUrl()}
+              onClick={() => {
+                trackWhatsAppInquiry({
+                  commodity: formData.product || "Quote Form Forward",
+                  destination: formData.destination,
+                  placement: "contact_form_instant_forward",
+                });
+              }}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-accent hover:bg-accent-dark text-white text-xs font-bold uppercase tracking-wider py-3.5 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-2 w-full text-center shadow-md hover:shadow-accent/15"

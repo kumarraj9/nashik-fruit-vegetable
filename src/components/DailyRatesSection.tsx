@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { MessageSquare, ArrowRight, Calendar, AlertCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { trackWhatsAppInquiry } from "@/lib/analytics";
 
 export default function DailyRatesSection() {
   const [name, setName] = useState("");
@@ -24,6 +25,11 @@ export default function DailyRatesSection() {
     }
     
     setError("");
+
+    trackWhatsAppInquiry({
+      commodity: product || "Onion Daily Rates",
+      placement: "daily_rates_section",
+    });
 
     const text = `Hello Nashik Export Desk,\n\nI want to inquire about daily Onion Wholesale rates.\n\n• Name: ${name}\n• My WhatsApp: ${whatsapp}\n• Commodity/Inquiry Details: ${product || "Onion Wholesale Price Inquiry"}\n\nPlease share the current price details.`;
     const encodedText = encodeURIComponent(text);
