@@ -108,6 +108,30 @@ export const siteConfig = {
         { parameter: "Minimum Order Qty (MOQ)", value: "1x20ft Reefer Container or Air Freight pallet loads" },
         { parameter: "Quality Parameters", value: "Glossy deep red rind, free from spots/sunburns, sweet ruby-red arils" },
       ]
+    },
+    strawberry: {
+      id: "strawberry",
+      slug: "strawberry-supplier-from-saputara",
+      name: "Fresh Saputara Strawberry",
+      tagline: "High-Altitude Farm-Fresh Strawberries Sourced Directly from the Misty Hills of Saputara.",
+      description: "Cultivated at 1,000 meters above sea level in the cool, misty microclimate of the Saputara and Surgana-Dang border hills. Hand-harvested at dawn, rapidly pre-cooled within 2 hours, and packed in ventilated clamshell punnets. High Brix sweetness (9-12%), glossy ruby-red color, and express cold-chain logistics to Dubai, Gulf markets, and Indian metros.",
+      imageUrl: "/images/strawberry_export.png",
+      whatsappText: "Hello, I am inquiring about sourcing bulk export-quality fresh Strawberries from Saputara. Please share current rates and air/road shipment availability.",
+      specs: [
+        { parameter: "HS Code", value: "08101000 (Fresh Strawberries)" },
+        { parameter: "Varieties", value: "Winter Dawn, Sweet Charlie, Camarosa, San Andreas" },
+        { parameter: "Origin", value: "Saputara Hill Station & Surgana-Dang Agricultural Belt (Elevation: 1,000m)" },
+        { parameter: "Maturity / Color", value: "75% - 85% Color (Air Cargo) | 90% - 95% Full Red (Regional Express)" },
+        { parameter: "Size & Sizing", value: "Grade A+ Jumbo (35g+), Grade A Large (25-35g), Grade Medium (15-25g)" },
+        { parameter: "Brix / Soluble Solids", value: "9% - 12% Brix (High natural sweetness & aroma)" },
+        { parameter: "Fruit Firmness", value: "> 1.8 - 2.2 kg/cm² (Firm pulp, zero transit bruising)" },
+        { parameter: "Harvest Window", value: "November to March (Peak winter harvest season)" },
+        { parameter: "Packaging Format", value: "200g / 250g PET Clamshell Punnets with bubble cushion pads (8-10 punnets per master carton)" },
+        { parameter: "Cold Chain Temp", value: "0°C to +2°C with 90% - 95% Relative Humidity" },
+        { parameter: "Pre-Cooling Protocol", value: "Forced-air rapid pre-cooling to +2°C within 120 minutes of dawn picking" },
+        { parameter: "Minimum Order Qty", value: "Air Cargo: 500kg - 2 MT | Domestic Reefer: 1 MT - 5 MT" },
+        { parameter: "Certifications Issued", value: "APEDA Registration, FSSAI, Phytosanitary Certificate, Global G.A.P. Compliant" }
+      ]
     }
   }
 };

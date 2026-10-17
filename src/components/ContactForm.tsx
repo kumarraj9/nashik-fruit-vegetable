@@ -43,6 +43,7 @@ export default function ContactForm() {
     { value: "onion", label: "Nashik Red Onion" },
     { value: "tomato", label: "Premium Fresh Tomato" },
     { value: "pomegranate", label: "Bhagwa Pomegranate" },
+    { value: "strawberry", label: "Fresh Saputara Strawberry" },
     { value: "mixed", label: "Mixed Container / General Produce" },
   ];
 

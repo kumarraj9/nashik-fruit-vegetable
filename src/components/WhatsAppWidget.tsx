@@ -24,6 +24,10 @@ export default function WhatsAppWidget() {
       text: siteConfig.products.pomegranate.whatsappText,
     },
     {
+      label: "Saputara Fresh Strawberries",
+      text: siteConfig.products.strawberry.whatsappText,
+    },
+    {
       label: "General Import Inquiry",
       text: "Hello, I am interested in sourcing agricultural produce from Nashik. Please share your complete export catalog.",
     },

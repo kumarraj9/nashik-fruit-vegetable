@@ -149,6 +149,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/strawberry-supplier-from-saputara/" className="hover:text-accent transition-colors flex items-center font-semibold text-emerald-300">
+                  <ArrowRight className="w-3 h-3 mr-1.5 text-accent" />
+                  Saputara Strawberry Specs
+                </Link>
+              </li>
+              <li>
                 <Link href="/logistics/" className="hover:text-accent transition-colors flex items-center">
                   <ArrowRight className="w-3 h-3 mr-1.5 text-emerald-500" />
                   Logistics & QC Pipeline

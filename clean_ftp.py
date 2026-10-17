@@ -65,6 +65,7 @@ try:
         'onion-exporter-from-nashik',
         'tomato-supplier-from-nashik',
         'pomegranate-supplier-from-nashik',
+        'strawberry-supplier-from-saputara',
         'dashboard'
     ]
     for folder in nextjs_folders:

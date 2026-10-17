@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Export Produce Catalog | Nashik Fruit and Vegetable Exporters",
-  description: "Browse our premium B2B catalog: World-famous Nashik Red Onions, shelf-life graded Fresh Tomatoes, and premium Bhagwa Pomegranates. Explore sizing, packaging, and custom shipping details.",
+  description: "Browse our premium B2B catalog: World-famous Nashik Red Onions, shelf-life graded Fresh Tomatoes, Bhagwa Pomegranates, and Saputara Fresh Strawberries. Explore sizing, packaging, and custom shipping details.",
 };
 
 export default function ProductsPage() {
@@ -54,6 +54,12 @@ export default function ProductsPage() {
         "position": 3,
         "name": "Bhagwa Pomegranate (HS Code 08109010)",
         "url": "https://nashikfruitandvegetable.com/pomegranate-supplier-from-nashik/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Saputara Fresh Strawberry (HS Code 08101000)",
+        "url": "https://nashikfruitandvegetable.com/strawberry-supplier-from-saputara/"
       }
     ]
   };

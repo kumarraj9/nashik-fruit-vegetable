@@ -154,7 +154,7 @@ export default function Navbar() {
                   <Link
                     href="/products/"
                     className={`text-sm font-semibold tracking-wide transition-colors duration-200 ${
-                      pathname === "/products/" || pathname.endsWith("-from-nashik/") ? "text-primary-light font-bold" : "text-slate-700 hover:text-primary"
+                      pathname === "/products/" || pathname.endsWith("-from-nashik/") || pathname.endsWith("-from-saputara/") ? "text-primary-light font-bold" : "text-slate-700 hover:text-primary"
                     }`}
                   >
                     Product
@@ -199,6 +199,13 @@ export default function Navbar() {
                       className="block px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-primary transition-colors"
                     >
                       🍎 Bhagwa Pomegranate
+                    </Link>
+                    <Link
+                      href="/strawberry-supplier-from-saputara/"
+                      onClick={() => setIsDropdownOpen(false)}
+                      className="block px-4 py-2.5 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-primary transition-colors"
+                    >
+                      🍓 Saputara Strawberry
                     </Link>
                     <div className="h-px bg-slate-100 my-1.5" />
                     <div className="px-4 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
@@ -307,7 +314,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setIsMobileProductOpen(!isMobileProductOpen)}
                   className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-base font-semibold tracking-wide transition-all text-slate-700 hover:bg-slate-50 hover:text-primary ${
-                    pathname === "/products/" || pathname.endsWith("-from-nashik/") ? "bg-emerald-50/50 text-primary" : ""
+                    pathname === "/products/" || pathname.endsWith("-from-nashik/") || pathname.endsWith("-from-saputara/") ? "bg-emerald-50/50 text-primary" : ""
                   }`}
                 >
                   <span>Product</span>
@@ -343,6 +350,13 @@ export default function Navbar() {
                       className="flex items-center justify-between px-4 py-2 rounded-md text-sm text-slate-600 hover:text-primary font-medium"
                     >
                       <span>🍎 Bhagwa Pomegranate</span>
+                    </Link>
+                    <Link
+                      href="/strawberry-supplier-from-saputara/"
+                      onClick={() => { setIsOpen(false); setIsMobileProductOpen(false); }}
+                      className="flex items-center justify-between px-4 py-2 rounded-md text-sm text-slate-600 hover:text-primary font-medium"
+                    >
+                      <span>🍓 Saputara Strawberry</span>
                     </Link>
                     <div className="h-px bg-slate-200/60 my-1 mx-4" />
                     <div className="px-4 py-1 text-[9px] font-bold text-slate-400 uppercase tracking-widest">
